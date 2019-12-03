@@ -1,18 +1,45 @@
-package com.ceiba.adn.tiendavideojuegos.dominio.modelo;
+package com.ceiba.adn.tiendavideojuegos.infraestructura.entidad;
 
-public class Cliente {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "cliente")
+public class ClienteEntidad {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_cliente")
 	private Long idCliente;
+	@Column(name = "nombre")
 	private String nombre;
+	@Column(name = "apellido")
 	private String apellido;
+	@Column(name = "telefono")
 	private String telefono;
+	@Column(name = "correo")
 	private String correo;
+	@Column(name = "cedula")
 	private String cedula;
+	@Column(name = "estado")
 	private String estado;
 	
-	public Cliente(Long idCliente, String nombre, String apellido, String telefono, String correo, String cedula,
+	
+	public ClienteEntidad() {
+		
+	}
+	
+	public ClienteEntidad(Long idCliente, String nombre, String apellido, String telefono, String correo, String cedula,
 			String estado) {
-		super();
 		this.idCliente = idCliente;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -21,6 +48,7 @@ public class Cliente {
 		this.cedula = cedula;
 		this.estado = estado;
 	}
+
 
 	public Long getIdCliente() {
 		return idCliente;
@@ -80,7 +108,9 @@ public class Cliente {
 	
 	
 	
+	
+	
+	
+	
 
-	
-	
 }

@@ -8,14 +8,14 @@ public class ClienteDTO {
 	private String telefono;
 	private String correo;
 	private String cedula;
-	private Boolean estado;
+	private String estado;
 	
 	public ClienteDTO() {
 		
 	}
 
 	public ClienteDTO(Long idCliente, String nombre, String apellido, String telefono, String correo, String cedula,
-			Boolean estado) {
+			String estado) {
 		super();
 		this.idCliente = idCliente;
 		this.nombre = nombre;
@@ -74,11 +74,11 @@ public class ClienteDTO {
 		this.cedula = cedula;
 	}
 
-	public Boolean getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 }
