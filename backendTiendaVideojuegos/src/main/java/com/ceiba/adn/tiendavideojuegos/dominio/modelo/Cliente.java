@@ -12,7 +12,6 @@ public class Cliente {
 	
 	public Cliente(Long idCliente, String nombre, String apellido, String telefono, String correo, String cedula,
 			String estado) {
-		super();
 		this.idCliente = idCliente;
 		this.nombre = nombre;
 		this.apellido = apellido;
