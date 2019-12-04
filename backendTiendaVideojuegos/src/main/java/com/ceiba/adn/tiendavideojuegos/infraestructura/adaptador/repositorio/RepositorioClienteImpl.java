@@ -47,6 +47,16 @@ public class RepositorioClienteImpl implements RepositorioCliente {
 	public void eliminarCliente(Long idCliente) {
 		repositorioClienteJpa.deleteById(idCliente);
 	}
-	
-	
+
+	@Override
+	public ClienteDTO buscarPorId(Long idCliente) {
+		ClienteEntidad clienteEntidad = repositorioClienteJpa.findById(idCliente).orElse(null);
+		if(clienteEntidad != null) {
+			return modelMapper.map(clienteEntidad, ClienteDTO.class);
+		}
+		else {
+			return null;
+		}
+	}
+
 }
