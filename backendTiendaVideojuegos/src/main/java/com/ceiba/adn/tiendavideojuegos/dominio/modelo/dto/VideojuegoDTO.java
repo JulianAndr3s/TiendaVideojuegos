@@ -1,17 +1,17 @@
 package com.ceiba.adn.tiendavideojuegos.dominio.modelo.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class VideojuegoDTO {
 	
 	private Long idVideojuego;
 	private String nombre;
 	private String genero;
-	private Date fechaLanzamiento;
+	private LocalDate fechaLanzamiento;
 	private Integer precio;
 	private String autor;
 	
-	public VideojuegoDTO(Long idVideojuego, String nombre, String genero, Date fechaLanzamiento, Integer precio,
+	public VideojuegoDTO(Long idVideojuego, String nombre, String genero, LocalDate fechaLanzamiento, Integer precio,
 			String autor) {
 		super();
 		this.idVideojuego = idVideojuego;
@@ -51,11 +51,11 @@ public class VideojuegoDTO {
 		this.genero = genero;
 	}
 
-	public Date getFechaLanzamiento() {
+	public LocalDate getFechaLanzamiento() {
 		return fechaLanzamiento;
 	}
 
-	public void setFechaLanzamiento(Date fechaLanzamiento) {
+	public void setFechaLanzamiento(LocalDate fechaLanzamiento) {
 		this.fechaLanzamiento = fechaLanzamiento;
 	}
 
