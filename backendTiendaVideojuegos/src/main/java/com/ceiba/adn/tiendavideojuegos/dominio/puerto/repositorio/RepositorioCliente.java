@@ -12,5 +12,6 @@ public interface RepositorioCliente {
 	void actualizarCliente(Cliente cliente);
 	void eliminarCliente(Long idCliente);
 	ClienteDTO buscarPorId(Long idCliente);
+	ClienteDTO buscarPorCedula(String cedula);
 	
 }

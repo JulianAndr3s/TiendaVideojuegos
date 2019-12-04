@@ -10,6 +10,6 @@ import com.ceiba.adn.tiendavideojuegos.infraestructura.entidad.ClienteEntidad;
 @Repository
 public interface RepositorioClienteJpa extends JpaRepository<ClienteEntidad, Serializable>{
 	
-	
+	ClienteEntidad findByCedula(String cedula);
 
 }

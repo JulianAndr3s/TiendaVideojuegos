@@ -40,7 +40,7 @@ public class RepositorioClienteImpl implements RepositorioCliente {
 	@Override
 	public void actualizarCliente(Cliente cliente) {
 		ClienteEntidad clienteEntidadActualizar = modelMapper.map(cliente, ClienteEntidad.class);
-		repositorioClienteJpa.save(clienteEntidadActualizar);		
+		repositorioClienteJpa.save(clienteEntidadActualizar);
 	}
 
 	@Override
@@ -51,6 +51,17 @@ public class RepositorioClienteImpl implements RepositorioCliente {
 	@Override
 	public ClienteDTO buscarPorId(Long idCliente) {
 		ClienteEntidad clienteEntidad = repositorioClienteJpa.findById(idCliente).orElse(null);
+		if(clienteEntidad != null) {
+			return modelMapper.map(clienteEntidad, ClienteDTO.class);
+		}
+		else {
+			return null;
+		}
+	}
+
+	@Override
+	public ClienteDTO buscarPorCedula(String cedula) {
+		ClienteEntidad clienteEntidad = repositorioClienteJpa.findByCedula(cedula);
 		if(clienteEntidad != null) {
 			return modelMapper.map(clienteEntidad, ClienteDTO.class);
 		}
