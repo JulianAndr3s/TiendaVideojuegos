@@ -10,9 +10,8 @@ public class ComandoCliente {
 	private String cedula;
 	private String estado;
 	
-	public ComandoCliente(Long idCliente, String nombre, String apellido, String telefono, String correo, String cedula,
-			String estado) {
-		
+	public ComandoCliente (Long idCliente, String nombre, String apellido, 
+			String telefono, String correo, String cedula, String estado) {
 		this.idCliente = idCliente;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -21,6 +20,7 @@ public class ComandoCliente {
 		this.cedula = cedula;
 		this.estado = estado;
 	}
+	
 	
 	public ComandoCliente() {
 		

@@ -18,7 +18,7 @@ public class ConvertirCliente {
         return modelMapper.map(cliente, ClienteEntidad.class);
     }
 
-    public List<ClienteDTO> convertirListaUsuarioEntidadAListaUsuario(List<ClienteEntidad> listaClienteEntidad, List<ClienteDTO> listaCliente){
+    public List<ClienteDTO> convertirListaClienteEntidadAListaCliente(List<ClienteEntidad> listaClienteEntidad, List<ClienteDTO> listaCliente){
         for(ClienteEntidad clienteEntidad: listaClienteEntidad) {
         	ClienteDTO cliente = modelMapper.map(clienteEntidad, ClienteDTO.class);
             listaCliente.add(cliente);

@@ -26,14 +26,20 @@ public class RepositorioClienteImpl implements RepositorioCliente {
 	
 	@Override
 	public void crearCliente(Cliente cliente) {
-		ClienteEntidad clienteEntidad = modelMapper.map(cliente, ClienteEntidad.class);
-		repositorioClienteJpa.save(clienteEntidad);
+		ClienteEntidad clienteEntidadCrear = modelMapper.map(cliente, ClienteEntidad.class);
+		repositorioClienteJpa.save(clienteEntidadCrear);
 	}
 
 	@Override
 	public List<ClienteDTO> listarClientes() {
 		List<ClienteEntidad> listaClienteEntidad = repositorioClienteJpa.findAll();
 		List<ClienteDTO> listaClienteDTO = new ArrayList<>();
-		return convertirCliente.convertirListaUsuarioEntidadAListaUsuario(listaClienteEntidad, listaClienteDTO);
+		return convertirCliente.convertirListaClienteEntidadAListaCliente(listaClienteEntidad, listaClienteDTO);
+	}
+
+	@Override
+	public void actualizarCliente(Cliente cliente) {
+		ClienteEntidad clienteEntidadActualizar = modelMapper.map(cliente, ClienteEntidad.class);
+		repositorioClienteJpa.save(clienteEntidadActualizar);		
 	}
 }
