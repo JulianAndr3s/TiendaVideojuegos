@@ -10,5 +10,6 @@ public interface RepositorioCliente {
 	void crearCliente(Cliente cliente);
 	List<ClienteDTO> listarClientes();
 	void actualizarCliente(Cliente cliente);
-
+	void eliminarCliente(Long idCliente);
+	
 }

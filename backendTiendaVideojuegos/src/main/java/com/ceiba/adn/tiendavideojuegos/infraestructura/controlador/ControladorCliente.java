@@ -2,6 +2,7 @@ package com.ceiba.adn.tiendavideojuegos.infraestructura.controlador;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.ComandoCliente;
 import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.consulta.manejador.cliente.ManejadorListarClientes;
 import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.manejador.cliente.ManejadorActualizarCliente;
 import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.manejador.cliente.ManejadorCrearCliente;
+import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.manejador.cliente.ManejadorEliminarCliente;
 import com.ceiba.adn.tiendavideojuegos.dominio.modelo.dto.ClienteDTO;
 
 @RestController
@@ -23,12 +25,15 @@ public class ControladorCliente {
 	private final ManejadorCrearCliente manejadorCrearCliente;
 	private final ManejadorListarClientes manejadorListarCliente;
 	private final ManejadorActualizarCliente manejadorActualizarCliente;
+	private final ManejadorEliminarCliente manejadorEliminarCliente;
 	
 	public ControladorCliente(ManejadorCrearCliente manejadorCrearCliente,
-			ManejadorListarClientes manejadorListarCliente, ManejadorActualizarCliente manejadorActualizarCliente) {
+			ManejadorListarClientes manejadorListarCliente, ManejadorActualizarCliente manejadorActualizarCliente,
+			ManejadorEliminarCliente manejadorEliminarCliente) {
 		this.manejadorCrearCliente = manejadorCrearCliente;
 		this.manejadorListarCliente = manejadorListarCliente;
 		this.manejadorActualizarCliente = manejadorActualizarCliente;
+		this.manejadorEliminarCliente = manejadorEliminarCliente;
 	}
 	
 	@PostMapping("/crear")
@@ -44,5 +49,10 @@ public class ControladorCliente {
 	@PutMapping("/{idCliente}/actualizar")
 	public void actualizarCliente(@RequestBody ComandoCliente comandoCliente, @PathVariable Long idCliente) {
 		this.manejadorActualizarCliente.ejecutar(comandoCliente, idCliente);
+	}
+	
+	@DeleteMapping("/{idCliente}/eliminar")
+	public void eliminarCliente(@PathVariable Long idCliente) {
+		this.manejadorEliminarCliente.ejecutar(idCliente);		
 	}
 }

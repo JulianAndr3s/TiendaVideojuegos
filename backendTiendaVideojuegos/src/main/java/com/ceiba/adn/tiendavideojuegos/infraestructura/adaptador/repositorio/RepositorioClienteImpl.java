@@ -42,4 +42,11 @@ public class RepositorioClienteImpl implements RepositorioCliente {
 		ClienteEntidad clienteEntidadActualizar = modelMapper.map(cliente, ClienteEntidad.class);
 		repositorioClienteJpa.save(clienteEntidadActualizar);		
 	}
+
+	@Override
+	public void eliminarCliente(Long idCliente) {
+		repositorioClienteJpa.deleteById(idCliente);
+	}
+	
+	
 }

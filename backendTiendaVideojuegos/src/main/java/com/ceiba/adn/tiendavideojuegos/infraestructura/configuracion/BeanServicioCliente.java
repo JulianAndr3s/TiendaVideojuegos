@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import com.ceiba.adn.tiendavideojuegos.dominio.puerto.repositorio.RepositorioCliente;
 import com.ceiba.adn.tiendavideojuegos.dominio.servicios.cliente.ServicioActualizarCliente;
 import com.ceiba.adn.tiendavideojuegos.dominio.servicios.cliente.ServicioCrearCliente;
+import com.ceiba.adn.tiendavideojuegos.dominio.servicios.cliente.ServicioEliminarCliente;
 import com.ceiba.adn.tiendavideojuegos.dominio.servicios.cliente.ServicioListarClientes;
 
 @Configuration
@@ -24,5 +25,10 @@ public class BeanServicioCliente {
 	@Bean
 	public ServicioActualizarCliente servicioActualizarCliente(RepositorioCliente repositorioCliente) {
 		return new ServicioActualizarCliente(repositorioCliente);
+	}
+	
+	@Bean
+	public ServicioEliminarCliente servicioEliminarCliente(RepositorioCliente repositorioCliente) {
+		return new ServicioEliminarCliente(repositorioCliente);
 	}
 }
