@@ -18,7 +18,7 @@ import com.ceiba.adn.tiendavideojuegos.testdatabuilder.dominio.modelo.ClienteTes
 
 class ServiciosClienteTest {
 	
-	public static final String NO_EXISTE_CLIENTE_BUSCADO = "No existe cliente buscado con este Id.";
+	public static final String NO_EXISTE_CLIENTE_BUSCADO = "No existe cliente con este Id.";
 	public static final String NO_EXISTE_CLIENTE_ACTUALIZAR = "No existe cliente a actualizar.";
 
 	@Test
