@@ -13,12 +13,13 @@ public class ServicioCrearCliente {
         this.repositorioCliente = repositorioCliente;
     }
 	
-	public void ejecutar(Cliente cliente) {
+	public boolean ejecutar(Cliente cliente) {
 		if(repositorioCliente.buscarPorCedula(cliente.getCedula()) != null) {
 			throw new ExcepcionGeneral(ExcepcionGeneral.YA_EXISTE_CLIENTE);
 		}
 		else {
 			this.repositorioCliente.crearCliente(cliente);
+			return true;
 		}
 	}
 }
