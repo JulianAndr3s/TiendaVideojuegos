@@ -20,7 +20,7 @@ public class ServicioEliminarCliente {
 			return true;
 		}
 		else {
-			throw new ExcepcionGeneral(ExcepcionGeneral.NO_EXISTE_CLIENTE_BUSCADO);
+			throw new ExcepcionGeneral(ExcepcionGeneral.NO_EXISTE_CLIENTE);
 		}
 	}
 	

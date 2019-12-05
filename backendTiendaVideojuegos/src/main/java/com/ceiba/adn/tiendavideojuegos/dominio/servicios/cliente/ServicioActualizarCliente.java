@@ -14,7 +14,7 @@ public class ServicioActualizarCliente {
 	
 	public void ejecutar(Cliente cliente) {
 		if (repositorioCliente.buscarPorId(cliente.getIdCliente()) == null) {
-			throw new ExcepcionGeneral(ExcepcionGeneral.NO_EXISTE_CLIENTE_ACTUALIZAR);
+			throw new ExcepcionGeneral(ExcepcionGeneral.NO_EXISTE_CLIENTE_A_ACTUALIZAR);
 		}
 		else {
 			this.repositorioCliente.actualizarCliente(cliente);
