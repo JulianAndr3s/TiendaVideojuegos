@@ -26,7 +26,12 @@ public class RepositorioClienteImpl implements RepositorioCliente {
 	
 	@Override
 	public void crearCliente(Cliente cliente) {
-		ClienteEntidad clienteEntidadCrear = modelMapper.map(cliente, ClienteEntidad.class);
+		ClienteEntidad clienteEntidadCrear = new ClienteEntidad(
+				cliente.getIdCliente(), cliente.getNombre(), cliente.getApellido(), 
+				cliente.getTelefono(), cliente.getCorreo(),cliente.getCedula(),
+				cliente.getEstado());
+		
+		//ClienteEntidad clienteEntidadCrear = modelMapper.map(cliente, ClienteEntidad.class);
 		repositorioClienteJpa.save(clienteEntidadCrear);
 	}
 
@@ -39,7 +44,10 @@ public class RepositorioClienteImpl implements RepositorioCliente {
 
 	@Override
 	public void actualizarCliente(Cliente cliente) {
-		ClienteEntidad clienteEntidadActualizar = modelMapper.map(cliente, ClienteEntidad.class);
+		ClienteEntidad clienteEntidadActualizar = new ClienteEntidad(
+				cliente.getIdCliente(), cliente.getNombre(), cliente.getApellido(), 
+				cliente.getTelefono(), cliente.getCorreo(),cliente.getCedula(),
+				cliente.getEstado());
 		repositorioClienteJpa.save(clienteEntidadActualizar);
 	}
 
