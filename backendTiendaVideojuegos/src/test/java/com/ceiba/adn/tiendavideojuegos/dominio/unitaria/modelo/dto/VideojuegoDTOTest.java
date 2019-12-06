@@ -25,20 +25,20 @@ class VideojuegoDTOTest {
 		VideojuegoDTO videojuegoDTO = new VideojuegoDTOTestDataBuilder().build();
 		
 		//Act
-		videojuegoDTO.setIdVideojuego(ID_VIDEOJUEGO);
-		videojuegoDTO.setNombre(NOMBRE);
-		videojuegoDTO.setGenero(GENERO);
-		videojuegoDTO.setFechaLanzamiento(FECHA_LANZAMIENTO);
-		videojuegoDTO.setPrecio(PRECIO);
-		videojuegoDTO.setAutor(AUTOR);
+		videojuegoDTO.setIdVideojuegoDTO(ID_VIDEOJUEGO);
+		videojuegoDTO.setNombreDTO(NOMBRE);
+		videojuegoDTO.setGeneroDTO(GENERO);
+		videojuegoDTO.setFechaLanzamientoDTO(FECHA_LANZAMIENTO);
+		videojuegoDTO.setPrecioDTO(PRECIO);
+		videojuegoDTO.setAutorDTO(AUTOR);
 		
 		//Assert
-		Assertions.assertEquals(ID_VIDEOJUEGO, videojuegoDTO.getIdVideojuego());
-		Assertions.assertEquals(NOMBRE, videojuegoDTO.getNombre());
-		Assertions.assertEquals(GENERO, videojuegoDTO.getGenero());
-		Assertions.assertEquals(FECHA_LANZAMIENTO, videojuegoDTO.getFechaLanzamiento());
-		Assertions.assertEquals(PRECIO, videojuegoDTO.getPrecio());
-		Assertions.assertEquals(AUTOR, videojuegoDTO.getAutor());
+		Assertions.assertEquals(ID_VIDEOJUEGO, videojuegoDTO.getIdVideojuegoDTO());
+		Assertions.assertEquals(NOMBRE, videojuegoDTO.getNombreDTO());
+		Assertions.assertEquals(GENERO, videojuegoDTO.getGeneroDTO());
+		Assertions.assertEquals(FECHA_LANZAMIENTO, videojuegoDTO.getFechaLanzamientoDTO());
+		Assertions.assertEquals(PRECIO, videojuegoDTO.getPrecioDTO());
+		Assertions.assertEquals(AUTOR, videojuegoDTO.getAutorDTO());
 	}
 
 }

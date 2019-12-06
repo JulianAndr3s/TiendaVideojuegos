@@ -4,22 +4,22 @@ import java.time.LocalDate;
 
 public class VideojuegoDTO {
 	
-	private Long idVideojuego;
-	private String nombre;
-	private String genero;
-	private LocalDate fechaLanzamiento;
-	private Integer precio;
-	private String autor;
+	private Long idVideojuegoDTO;
+	private String nombreDTO;
+	private String generoDTO;
+	private LocalDate fechaLanzamientoDTO;
+	private Integer precioDTO;
+	private String autorDTO;
 	
 	public VideojuegoDTO(Long idVideojuego, String nombre, String genero, LocalDate fechaLanzamiento, Integer precio,
 			String autor) {
 		super();
-		this.idVideojuego = idVideojuego;
-		this.nombre = nombre;
-		this.genero = genero;
-		this.fechaLanzamiento = fechaLanzamiento;
-		this.precio = precio;
-		this.autor = autor;
+		this.idVideojuegoDTO = idVideojuego;
+		this.nombreDTO = nombre;
+		this.generoDTO = genero;
+		this.fechaLanzamientoDTO = fechaLanzamiento;
+		this.precioDTO = precio;
+		this.autorDTO = autor;
 	}
 	
 	public VideojuegoDTO() {
@@ -27,52 +27,52 @@ public class VideojuegoDTO {
 	}
 	
 	
-	public Long getIdVideojuego() {
-		return idVideojuego;
+	public Long getIdVideojuegoDTO() {
+		return idVideojuegoDTO;
 	}
 
-	public void setIdVideojuego(Long idVideojuego) {
-		this.idVideojuego = idVideojuego;
+	public void setIdVideojuegoDTO(Long idVideojuego) {
+		this.idVideojuegoDTO = idVideojuego;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreDTO() {
+		return nombreDTO;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreDTO(String nombre) {
+		this.nombreDTO = nombre;
 	}
 
-	public String getGenero() {
-		return genero;
+	public String getGeneroDTO() {
+		return generoDTO;
 	}
 
-	public void setGenero(String genero) {
-		this.genero = genero;
+	public void setGeneroDTO(String genero) {
+		this.generoDTO = genero;
 	}
 
-	public LocalDate getFechaLanzamiento() {
-		return fechaLanzamiento;
+	public LocalDate getFechaLanzamientoDTO() {
+		return fechaLanzamientoDTO;
 	}
 
-	public void setFechaLanzamiento(LocalDate fechaLanzamiento) {
-		this.fechaLanzamiento = fechaLanzamiento;
+	public void setFechaLanzamientoDTO(LocalDate fechaLanzamiento) {
+		this.fechaLanzamientoDTO = fechaLanzamiento;
 	}
 
-	public Integer getPrecio() {
-		return precio;
+	public Integer getPrecioDTO() {
+		return precioDTO;
 	}
 
-	public void setPrecio(Integer precio) {
-		this.precio = precio;
+	public void setPrecioDTO(Integer precio) {
+		this.precioDTO = precio;
 	}
 
-	public String getAutor() {
-		return autor;
+	public String getAutorDTO() {
+		return autorDTO;
 	}
 
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public void setAutorDTO(String autor) {
+		this.autorDTO = autor;
 	}
 
 }

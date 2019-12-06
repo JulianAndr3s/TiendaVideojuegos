@@ -2,13 +2,13 @@ package com.ceiba.adn.tiendavideojuegos.dominio.modelo.dto;
 
 public class ClienteDTO {
 	
-	private Long idCliente;
-	private String nombre;
-	private String apellido;
-	private String telefono;
-	private String correo;
-	private String cedula;
-	private String estado;
+	private Long idClienteDTO;
+	private String nombreDTO;
+	private String apellidoDTO;
+	private String telefonoDTO;
+	private String correoDTO;
+	private String cedulaDTO;
+	private String estadoDTO;
 	
 	public ClienteDTO() {
 		
@@ -17,68 +17,68 @@ public class ClienteDTO {
 	public ClienteDTO(Long idCliente, String nombre, String apellido, String telefono, String correo, String cedula,
 			String estado) {
 		super();
-		this.idCliente = idCliente;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.telefono = telefono;
-		this.correo = correo;
-		this.cedula = cedula;
-		this.estado = estado;
+		this.idClienteDTO = idCliente;
+		this.nombreDTO = nombre;
+		this.apellidoDTO = apellido;
+		this.telefonoDTO = telefono;
+		this.correoDTO = correo;
+		this.cedulaDTO = cedula;
+		this.estadoDTO = estado;
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
+	public Long getIdClienteDTO() {
+		return idClienteDTO;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setIdClienteDTO(Long idCliente) {
+		this.idClienteDTO = idCliente;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreDTO() {
+		return nombreDTO;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreDTO(String nombre) {
+		this.nombreDTO = nombre;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public String getApellidoDTO() {
+		return apellidoDTO;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setApellidoDTO(String apellido) {
+		this.apellidoDTO = apellido;
 	}
 
-	public String getTelefono() {
-		return telefono;
+	public String getTelefonoDTO() {
+		return telefonoDTO;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setTelefonoDTO(String telefono) {
+		this.telefonoDTO = telefono;
 	}
 
-	public String getCorreo() {
-		return correo;
+	public String getCorreoDTO() {
+		return correoDTO;
 	}
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public void setCorreoDTO(String correo) {
+		this.correoDTO = correo;
 	}
 
-	public String getCedula() {
-		return cedula;
+	public String getCedulaDTO() {
+		return cedulaDTO;
 	}
 
-	public void setCedula(String cedula) {
-		this.cedula = cedula;
+	public void setCedulaDTO(String cedula) {
+		this.cedulaDTO = cedula;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getEstadoDTO() {
+		return estadoDTO;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setEstadoDTO(String estado) {
+		this.estadoDTO = estado;
 	}
 }

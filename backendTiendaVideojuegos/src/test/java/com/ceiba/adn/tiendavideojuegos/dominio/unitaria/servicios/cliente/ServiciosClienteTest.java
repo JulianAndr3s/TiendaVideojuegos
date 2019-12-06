@@ -27,12 +27,12 @@ class ServiciosClienteTest {
 		//Arrange
 		RepositorioCliente repositorioCliente = Mockito.mock(RepositorioCliente.class);
 		ClienteDTO clienteDTO = new ClienteDTOTestDataBuilder().build();
-		when(repositorioCliente.buscarPorId(clienteDTO.getIdCliente())).thenReturn(null);
+		when(repositorioCliente.buscarPorId(clienteDTO.getIdClienteDTO())).thenReturn(null);
 		ServicioEliminarCliente servicioEliminarCliente = new ServicioEliminarCliente(repositorioCliente);
 		
 		//Act - Assert
 		ExcepcionGeneral excepcionTest = Assertions.assertThrows(ExcepcionGeneral.class, () -> 
-		servicioEliminarCliente.ejecutar(clienteDTO.getIdCliente()), NO_EXISTE_CLIENTE_BUSCADO);
+		servicioEliminarCliente.ejecutar(clienteDTO.getIdClienteDTO()), NO_EXISTE_CLIENTE_BUSCADO);
 		
 		Assertions.assertTrue(excepcionTest.getMessage().contentEquals(NO_EXISTE_CLIENTE_BUSCADO));
 	}

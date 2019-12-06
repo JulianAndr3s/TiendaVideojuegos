@@ -24,22 +24,22 @@ class ClienteDTOTest {
 		ClienteDTO clienteDTO = new ClienteDTOTestDataBuilder().build();
 		
 		//Act
-		clienteDTO.setIdCliente(ID_CLIENTE);
-		clienteDTO.setNombre(NOMBRE);
-		clienteDTO.setApellido(APELLIDO);
-		clienteDTO.setTelefono(TELEFONO);
-		clienteDTO.setCorreo(CORREO);
-		clienteDTO.setCedula(CEDULA);
-		clienteDTO.setEstado(ESTADO_ACTIVO);
+		clienteDTO.setIdClienteDTO(ID_CLIENTE);
+		clienteDTO.setNombreDTO(NOMBRE);
+		clienteDTO.setApellidoDTO(APELLIDO);
+		clienteDTO.setTelefonoDTO(TELEFONO);
+		clienteDTO.setCorreoDTO(CORREO);
+		clienteDTO.setCedulaDTO(CEDULA);
+		clienteDTO.setEstadoDTO(ESTADO_ACTIVO);
 		
 		//Assert
-		Assertions.assertEquals(ID_CLIENTE, clienteDTO.getIdCliente() );
-		Assertions.assertEquals(NOMBRE, clienteDTO.getNombre());
-		Assertions.assertEquals(APELLIDO, clienteDTO.getApellido());
-		Assertions.assertEquals(TELEFONO,clienteDTO.getTelefono());
-		Assertions.assertEquals(CORREO, clienteDTO.getCorreo());
-		Assertions.assertEquals(CEDULA, clienteDTO.getCedula());
-		Assertions.assertEquals(ESTADO_ACTIVO, clienteDTO.getEstado());
+		Assertions.assertEquals(ID_CLIENTE, clienteDTO.getIdClienteDTO());
+		Assertions.assertEquals(NOMBRE, clienteDTO.getNombreDTO());
+		Assertions.assertEquals(APELLIDO, clienteDTO.getApellidoDTO());
+		Assertions.assertEquals(TELEFONO,clienteDTO.getTelefonoDTO());
+		Assertions.assertEquals(CORREO, clienteDTO.getCorreoDTO());
+		Assertions.assertEquals(CEDULA, clienteDTO.getCedulaDTO());
+		Assertions.assertEquals(ESTADO_ACTIVO, clienteDTO.getEstadoDTO());
 	}
 	
 	@Test
@@ -49,22 +49,22 @@ class ClienteDTOTest {
 		ClienteDTO clienteDTO = new ClienteDTOTestDataBuilder().build();
 		
 		//Act
-		clienteDTO.setIdCliente(ID_CLIENTE);
-		clienteDTO.setNombre(NOMBRE);
-		clienteDTO.setApellido(APELLIDO);
-		clienteDTO.setTelefono(TELEFONO);
-		clienteDTO.setCorreo(CORREO);
-		clienteDTO.setCedula(CEDULA);
-		clienteDTO.setEstado(ESTADO_INACTIVO);
+		clienteDTO.setIdClienteDTO(ID_CLIENTE);
+		clienteDTO.setNombreDTO(NOMBRE);
+		clienteDTO.setApellidoDTO(APELLIDO);
+		clienteDTO.setTelefonoDTO(TELEFONO);
+		clienteDTO.setCorreoDTO(CORREO);
+		clienteDTO.setCedulaDTO(CEDULA);
+		clienteDTO.setEstadoDTO(ESTADO_INACTIVO);
 		
 		//Assert
-		Assertions.assertEquals(ID_CLIENTE, clienteDTO.getIdCliente() );
-		Assertions.assertEquals(NOMBRE, clienteDTO.getNombre());
-		Assertions.assertEquals(APELLIDO, clienteDTO.getApellido());
-		Assertions.assertEquals(TELEFONO,clienteDTO.getTelefono());
-		Assertions.assertEquals(CORREO, clienteDTO.getCorreo());
-		Assertions.assertEquals(CEDULA, clienteDTO.getCedula());
-		Assertions.assertEquals(ESTADO_INACTIVO, clienteDTO.getEstado());
+		Assertions.assertEquals(ID_CLIENTE, clienteDTO.getIdClienteDTO());
+		Assertions.assertEquals(NOMBRE, clienteDTO.getNombreDTO());
+		Assertions.assertEquals(APELLIDO, clienteDTO.getApellidoDTO());
+		Assertions.assertEquals(TELEFONO,clienteDTO.getTelefonoDTO());
+		Assertions.assertEquals(CORREO, clienteDTO.getCorreoDTO());
+		Assertions.assertEquals(CEDULA, clienteDTO.getCedulaDTO());
+		Assertions.assertEquals(ESTADO_INACTIVO, clienteDTO.getEstadoDTO());
 	}
 	
 	
