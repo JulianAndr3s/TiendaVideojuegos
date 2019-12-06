@@ -48,10 +48,52 @@ class ControladorClienteTest {
     }
 	
 	@Test
-	void crearClienteTest() throws Exception {
+	void flujoControladorTest() throws Exception{
+		
 		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
+		
+		try {		
+		mockMvc.perform(delete("/cliente/".concat((ID_PARA_TEST).toString()).concat("/eliminar")).contentType
+				(MediaType.TEXT_PLAIN).content(objectMapper.writeValueAsString
+						(comandoCliente.getIdCliente()))).andExpect(status().isOk());
+			
 		mockMvc.perform(post("/cliente/crear").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(comandoCliente))).andExpect(status().isOk());
+		
+		mockMvc.perform(put("/cliente/".concat((ID_PARA_TEST).toString()).concat("/actualizar")).contentType
+				(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString
+						(comandoCliente))).andExpect(status().isOk());
+		
+		mockMvc.perform(get("/cliente/listar")).andExpect(status().isOk());
+		
+		} catch(Exception excepcionTest){
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
+	}
+	
+	@Test
+	void excepcionActualizarClienteTest() throws Exception {
+		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
+		
+		try {	
+			mockMvc.perform(put("/cliente/".concat((ID_PARA_TEST).toString()).concat("/actualizar")).contentType
+					(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString
+							(comandoCliente))).andExpect(status().isInternalServerError());
+		} catch(Exception excepcionTest){
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
+	}
+	
+	@Test
+	void excepcionEliminarClienteTest() throws Exception {
+		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
+		try {
+			mockMvc.perform(delete("/cliente/".concat((ID_PARA_TEST).toString()).concat("/eliminar")).contentType
+					(MediaType.TEXT_PLAIN).content(objectMapper.writeValueAsString
+							(comandoCliente.getIdCliente()))).andExpect(status().isInternalServerError());
+		} catch(Exception excepcionTest) {
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
 	}
 	
 	@Test
@@ -67,53 +109,4 @@ class ControladorClienteTest {
 			System.out.println(excepcionTest.getCause().getMessage());
 		}
 	}
-	
-	/*@Test
-	void actualizarClienteTest() throws Exception {
-		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-		crearClienteTest();
-		mockMvc.perform(put("/cliente/".concat((ID_PARA_TEST).toString()).concat("/actualizar")).contentType
-				(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString
-						(comandoCliente))).andExpect(status().isOk());
-	}*/
-	
-	@Test
-	void excepcionActualizarClienteTest() throws Exception {
-		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-		
-		try {	
-			mockMvc.perform(put("/cliente/".concat((ID_PARA_TEST).toString()).concat("/actualizar")).contentType
-					(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString
-							(comandoCliente))).andExpect(status().isInternalServerError());
-		} catch(Exception excepcionTest){
-			System.out.println(excepcionTest.getCause().getMessage());
-		}
-	}
-	
-	/*@Test
-	void eliminarClienteTest() throws Exception {
-		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-		crearClienteTest();
-		mockMvc.perform(delete("/cliente/".concat((ID_PARA_TEST).toString()).concat("/eliminar")).contentType
-				(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString
-						(comandoCliente))).andExpect(status().isOk());
-	}*/
-	
-	@Test
-	void excepcionEliminarClienteTest() throws Exception {
-		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-		try {
-			mockMvc.perform(delete("/cliente/".concat((ID_PARA_TEST).toString()).concat("/eliminar")).contentType
-					(MediaType.TEXT_PLAIN).content(objectMapper.writeValueAsString
-							(comandoCliente.getIdCliente()))).andExpect(status().isInternalServerError());
-		} catch(Exception excepcionTest) {
-			System.out.println(excepcionTest.getCause().getMessage());
-		}
-	}
-	
-	@Test
-	void listarClienteTest() throws Exception {
-		mockMvc.perform(get("/cliente/listar")).andExpect(status().isOk());
-	}
-	
 }
