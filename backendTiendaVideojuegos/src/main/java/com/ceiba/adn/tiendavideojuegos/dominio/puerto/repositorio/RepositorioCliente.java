@@ -13,5 +13,6 @@ public interface RepositorioCliente {
 	void eliminarCliente(Long idCliente);
 	ClienteDTO buscarPorId(Long idCliente);
 	ClienteDTO buscarPorCedula(String cedula);
+	boolean existeCliente(Cliente cliente);
 	
 }

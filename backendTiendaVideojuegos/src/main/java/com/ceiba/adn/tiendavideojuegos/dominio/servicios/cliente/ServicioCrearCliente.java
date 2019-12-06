@@ -14,7 +14,7 @@ public class ServicioCrearCliente {
     }
 	
 	public boolean ejecutar(Cliente cliente) {
-		if(repositorioCliente.buscarPorCedula(cliente.getCedula()) != null) {
+		if(repositorioCliente.existeCliente(cliente)) {
 			throw new ExcepcionGeneral(ExcepcionGeneral.YA_EXISTE_CLIENTE);
 		}
 		else {

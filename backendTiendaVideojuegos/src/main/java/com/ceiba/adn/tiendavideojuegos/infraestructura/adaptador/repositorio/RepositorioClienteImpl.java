@@ -69,5 +69,11 @@ public class RepositorioClienteImpl implements RepositorioCliente {
 			return null;
 		}
 	}
+	
+	@Override
+	public boolean existeCliente(Cliente cliente) {
+		String cedulaCliente = cliente.getCedula();
+		return (repositorioClienteJpa.findByCedula(cedulaCliente)) != null;
+	}
 
 }
