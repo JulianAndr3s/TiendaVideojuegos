@@ -26,59 +26,59 @@ public class ClienteDTO {
 		this.estadoDTO = estado;
 	}
 
-	public Long getIdClienteDTO() {
+	public Long getIdCliente() {
 		return idClienteDTO;
 	}
 
-	public void setIdClienteDTO(Long idCliente) {
+	public void setIdCliente(Long idCliente) {
 		this.idClienteDTO = idCliente;
 	}
 
-	public String getNombreDTO() {
+	public String getNombre() {
 		return nombreDTO;
 	}
 
-	public void setNombreDTO(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombreDTO = nombre;
 	}
 
-	public String getApellidoDTO() {
+	public String getApellido() {
 		return apellidoDTO;
 	}
-
-	public void setApellidoDTO(String apellido) {
+	
+	public void setApellido(String apellido) {
 		this.apellidoDTO = apellido;
 	}
 
-	public String getTelefonoDTO() {
+	public String getTelefono() {
 		return telefonoDTO;
 	}
 
-	public void setTelefonoDTO(String telefono) {
+	public void setTelefono(String telefono) {
 		this.telefonoDTO = telefono;
 	}
 
-	public String getCorreoDTO() {
+	public String getCorreo() {
 		return correoDTO;
 	}
 
-	public void setCorreoDTO(String correo) {
+	public void setCorreo(String correo) {
 		this.correoDTO = correo;
 	}
 
-	public String getCedulaDTO() {
+	public String getCedula() {
 		return cedulaDTO;
 	}
 
-	public void setCedulaDTO(String cedula) {
+	public void setCedula(String cedula) {
 		this.cedulaDTO = cedula;
 	}
 
-	public String getEstadoDTO() {
+	public String getEstado() {
 		return estadoDTO;
 	}
 
-	public void setEstadoDTO(String estado) {
+	public void setEstado(String estado) {
 		this.estadoDTO = estado;
 	}
 }
