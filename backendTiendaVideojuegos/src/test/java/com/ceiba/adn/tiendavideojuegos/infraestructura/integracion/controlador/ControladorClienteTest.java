@@ -37,6 +37,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class ControladorClienteTest {
 
 	private static final Long ID_PARA_TEST = 1L;
+	private static final Long ID_PARA_TEST_FALLAR = 2L;
 	
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -108,4 +109,48 @@ class ControladorClienteTest {
 				.andDo(print())
 				.andExpect(status().isOk());
 	}
+	
+	@Test
+	void excepcionActualizarClienteTest() throws Exception {
+		RepositorioClienteImpl repositorioClienteImpl = new RepositorioClienteImpl(repositorioClienteJpa);
+		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
+		repositorioClienteImpl.crearCliente(cliente);
+		try {	
+			mockMvc.perform(put("/cliente/".concat((ID_PARA_TEST_FALLAR).toString()).concat("/actualizar"))
+					.contentType(MediaType.APPLICATION_JSON)
+					.content(objectMapper.writeValueAsString(cliente)))
+					.andExpect(status().isInternalServerError());
+		} catch(Exception excepcionTest){
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
+	}
+	
+	@Test
+	void excepcionEliminarClienteTest() throws Exception {
+		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
+		try {
+			mockMvc.perform(delete("/cliente/".concat((ID_PARA_TEST).toString()).concat("/eliminar"))
+					.contentType(MediaType.TEXT_PLAIN)
+					.content(objectMapper.writeValueAsString(comandoCliente.getIdCliente())))
+					.andExpect(status().isInternalServerError());
+		} catch(Exception excepcionTest) {
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
+	}
+	
+	@Test
+	void excepcionCrearClienteTest() throws Exception {
+		RepositorioClienteImpl repositorioClienteImpl = new RepositorioClienteImpl(repositorioClienteJpa);
+		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
+		repositorioClienteImpl.crearCliente(cliente);
+		try {	
+			mockMvc.perform(post("/cliente/crear")
+					.contentType(MediaType.APPLICATION_JSON)
+					.content(objectMapper.writeValueAsString(cliente)))
+					.andExpect(status().isInternalServerError());
+		} catch(Exception excepcionTest){
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
+	}
+	
 }
