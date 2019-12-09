@@ -27,51 +27,51 @@ public class VideojuegoDTO {
 	}
 	
 	
-	public Long getIdVideojuegoDTO() {
+	public Long getIdVideojuego() {
 		return idVideojuegoDTO;
 	}
 
-	public void setIdVideojuegoDTO(Long idVideojuego) {
+	public void setIdVideojuego(Long idVideojuego) {
 		this.idVideojuegoDTO = idVideojuego;
 	}
 
-	public String getNombreDTO() {
+	public String getNombre() {
 		return nombreDTO;
 	}
 
-	public void setNombreDTO(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombreDTO = nombre;
 	}
 
-	public String getGeneroDTO() {
+	public String getGenero() {
 		return generoDTO;
 	}
 
-	public void setGeneroDTO(String genero) {
+	public void setGenero(String genero) {
 		this.generoDTO = genero;
 	}
 
-	public LocalDate getFechaLanzamientoDTO() {
+	public LocalDate getFechaLanzamiento() {
 		return fechaLanzamientoDTO;
 	}
 
-	public void setFechaLanzamientoDTO(LocalDate fechaLanzamiento) {
+	public void setFechaLanzamiento(LocalDate fechaLanzamiento) {
 		this.fechaLanzamientoDTO = fechaLanzamiento;
 	}
 
-	public Integer getPrecioDTO() {
+	public Integer getPrecio() {
 		return precioDTO;
 	}
 
-	public void setPrecioDTO(Integer precio) {
+	public void setPrecio(Integer precio) {
 		this.precioDTO = precio;
 	}
 
-	public String getAutorDTO() {
+	public String getAutor() {
 		return autorDTO;
 	}
 
-	public void setAutorDTO(String autor) {
+	public void setAutor(String autor) {
 		this.autorDTO = autor;
 	}
 
