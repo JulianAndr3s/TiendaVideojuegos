@@ -17,12 +17,12 @@ import com.ceiba.adn.tiendavideojuegos.infraestructura.repositoriojpa.Repositori
 @Repository
 public class RepositorioClientePostgres implements RepositorioCliente {
 
-	private ModelMapper modelMapper = new ModelMapper();
+	@Autowired
+	private ConvertirCliente convertirCliente;
 	
 	private RepositorioClienteJpa repositorioClienteJpa;
 	
-	@Autowired
-	private ConvertirCliente convertirCliente;
+	private ModelMapper modelMapper = new ModelMapper();
 	
 	public RepositorioClientePostgres (RepositorioClienteJpa repositorioClienteJpa) {
 		this.repositorioClienteJpa = repositorioClienteJpa;

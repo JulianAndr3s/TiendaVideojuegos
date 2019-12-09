@@ -21,10 +21,10 @@ public class ComandoCliente {
 		this.estado = estado;
 	}
 	
-	
 	public ComandoCliente() {
 		
 	}
+	
 
 	public Long getIdCliente() {
 		return idCliente;
@@ -47,8 +47,4 @@ public class ComandoCliente {
 	public String getEstado() {
 		return estado;
 	}
-	
-	
-	
-
 }

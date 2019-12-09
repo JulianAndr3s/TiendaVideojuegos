@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Videojuego;
@@ -16,11 +17,13 @@ import com.ceiba.adn.tiendavideojuegos.infraestructura.repositoriojpa.Repositori
 @Repository
 public class RepositorioVideojuegoPostgres implements RepositorioVideojuego {
 	
-	private ModelMapper modelMapper = new ModelMapper();
-
+	@Autowired
+	private ConvertirVideojuego convertirVideojuego;
+	
 	private RepositorioVideojuegoJpa repositorioVideojuegoJpa;
 	
-	private ConvertirVideojuego convertirVideojuego = new ConvertirVideojuego();
+	private ModelMapper modelMapper = new ModelMapper();
+
 	
 	public RepositorioVideojuegoPostgres(RepositorioVideojuegoJpa repositorioVideojuegoJpa) {
 		this.repositorioVideojuegoJpa = repositorioVideojuegoJpa;
