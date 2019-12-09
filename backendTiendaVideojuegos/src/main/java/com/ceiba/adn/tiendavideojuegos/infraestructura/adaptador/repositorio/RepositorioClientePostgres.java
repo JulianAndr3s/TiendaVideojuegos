@@ -20,7 +20,6 @@ public class RepositorioClientePostgres implements RepositorioCliente {
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	@Autowired
 	private RepositorioClienteJpa repositorioClienteJpa;
 	
 	@Autowired
