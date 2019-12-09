@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class VideojuegoEntidad {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_videojuego")
 	private Long idVideojuego;
 	@Column(name = "nombre")
