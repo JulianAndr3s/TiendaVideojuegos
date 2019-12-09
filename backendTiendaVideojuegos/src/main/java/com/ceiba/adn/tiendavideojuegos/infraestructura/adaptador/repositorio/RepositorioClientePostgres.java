@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Cliente;
@@ -20,7 +21,8 @@ public class RepositorioClientePostgres implements RepositorioCliente {
 	
 	private RepositorioClienteJpa repositorioClienteJpa;
 	
-	private ConvertirCliente convertirCliente = new ConvertirCliente();
+	@Autowired
+	private ConvertirCliente convertirCliente;
 	
 	public RepositorioClientePostgres (RepositorioClienteJpa repositorioClienteJpa) {
 		this.repositorioClienteJpa = repositorioClienteJpa;
