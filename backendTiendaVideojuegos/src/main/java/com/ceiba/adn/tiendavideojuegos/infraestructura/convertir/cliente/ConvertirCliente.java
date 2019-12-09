@@ -3,7 +3,6 @@ package com.ceiba.adn.tiendavideojuegos.infraestructura.convertir.cliente;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Cliente;
@@ -13,8 +12,7 @@ import com.ceiba.adn.tiendavideojuegos.infraestructura.entidad.ClienteEntidad;
 @Component
 public class ConvertirCliente {
 	
-	@Autowired
-	private ModelMapper modelMapper;
+	private ModelMapper modelMapper = new ModelMapper();
 	
     public ClienteEntidad convertirClienteDominioAClienteEntidad(Cliente cliente){
         return modelMapper.map(cliente, ClienteEntidad.class);
