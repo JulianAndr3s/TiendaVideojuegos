@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.ComandoCliente;
-import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.consulta.manejador.cliente.ManejadorListarClientes;
 import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.manejador.cliente.ManejadorActualizarCliente;
 import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.manejador.cliente.ManejadorCrearCliente;
 import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.manejador.cliente.ManejadorEliminarCliente;
+import com.ceiba.adn.tiendavideojuegos.aplicacion.consulta.manejador.cliente.ManejadorListarClientes;
 import com.ceiba.adn.tiendavideojuegos.dominio.modelo.dto.ClienteDTO;
 
 @RestController

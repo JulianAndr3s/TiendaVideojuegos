@@ -1,4 +1,4 @@
-package com.ceiba.adn.tiendavideojuegos.aplicacion.comando.consulta.manejador.cliente;
+package com.ceiba.adn.tiendavideojuegos.aplicacion.consulta.manejador.cliente;
 
 import java.util.List;
 

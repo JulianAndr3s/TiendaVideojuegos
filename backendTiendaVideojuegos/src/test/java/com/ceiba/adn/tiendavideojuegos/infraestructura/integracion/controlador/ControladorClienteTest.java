@@ -25,7 +25,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.ceiba.adn.tiendavideojuegos.BackendTiendaVideojuegosApplication;
 import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.ComandoCliente;
 import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Cliente;
-import com.ceiba.adn.tiendavideojuegos.infraestructura.adaptador.repositorio.RepositorioClienteImpl;
+import com.ceiba.adn.tiendavideojuegos.infraestructura.adaptador.repositorio.RepositorioClientePostgres;
 import com.ceiba.adn.tiendavideojuegos.infraestructura.repositoriojpa.RepositorioClienteJpa;
 import com.ceiba.adn.tiendavideojuegos.testdatabuilder.aplicacion.comando.ComandoClienteTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -68,7 +68,7 @@ class ControladorClienteTest {
 	
 	@Test
 	void eliminarClienteTest() throws Exception {
-		RepositorioClienteImpl repositorioClienteImpl = new RepositorioClienteImpl(repositorioClienteJpa);
+		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
 		mockMvc.perform(delete("/cliente/".concat((ID_PARA_TEST).toString()).concat("/eliminar"))
@@ -80,7 +80,7 @@ class ControladorClienteTest {
 	
 	@Test
 	void actualizarClienteTest() throws Exception {
-		RepositorioClienteImpl repositorioClienteImpl = new RepositorioClienteImpl(repositorioClienteJpa);
+		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
 		cliente.setNombre("JULIAN");
@@ -93,7 +93,7 @@ class ControladorClienteTest {
 	
 	@Test
 	void listarClienteTest() throws Exception {
-		RepositorioClienteImpl repositorioClienteImpl = new RepositorioClienteImpl(repositorioClienteJpa);
+		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		Cliente cliente2 = new Cliente(2L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
@@ -112,7 +112,7 @@ class ControladorClienteTest {
 	
 	@Test
 	void excepcionActualizarClienteTest() throws Exception {
-		RepositorioClienteImpl repositorioClienteImpl = new RepositorioClienteImpl(repositorioClienteJpa);
+		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
 		try {	
@@ -140,7 +140,7 @@ class ControladorClienteTest {
 	
 	@Test
 	void excepcionCrearClienteTest() throws Exception {
-		RepositorioClienteImpl repositorioClienteImpl = new RepositorioClienteImpl(repositorioClienteJpa);
+		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
 		try {	

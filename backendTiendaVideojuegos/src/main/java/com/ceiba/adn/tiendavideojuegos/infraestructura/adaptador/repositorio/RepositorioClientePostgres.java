@@ -14,13 +14,13 @@ import com.ceiba.adn.tiendavideojuegos.infraestructura.entidad.ClienteEntidad;
 import com.ceiba.adn.tiendavideojuegos.infraestructura.repositoriojpa.RepositorioClienteJpa;
 
 @Repository
-public class RepositorioClienteImpl implements RepositorioCliente {
+public class RepositorioClientePostgres implements RepositorioCliente {
 
 	private ModelMapper modelMapper = new ModelMapper();
 	private RepositorioClienteJpa repositorioClienteJpa;
 	private ConvertirCliente convertirCliente = new ConvertirCliente();
 	
-	public RepositorioClienteImpl (RepositorioClienteJpa repositorioClienteJpa) {
+	public RepositorioClientePostgres (RepositorioClienteJpa repositorioClienteJpa) {
 		this.repositorioClienteJpa = repositorioClienteJpa;
 	}
 	
