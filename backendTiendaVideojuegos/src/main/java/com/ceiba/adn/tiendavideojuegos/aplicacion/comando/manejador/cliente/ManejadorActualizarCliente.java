@@ -18,9 +18,10 @@ public class ManejadorActualizarCliente {
 		this.fabricaCliente = fabricaCliente;
 	}
 	
-	public void ejecutar(ComandoCliente comandoCliente, Long idCliente) {
+	public void ejecutar(ComandoCliente comandoCliente, String cedula) {
 		Cliente cliente = this.fabricaCliente.crear(comandoCliente);
-		cliente.setIdCliente(idCliente);
+		cliente.setIdCliente(comandoCliente.getIdCliente());
+		cliente.setCedula(cedula);
 		this.servicioActualizarCliente.ejecutar(cliente);
 	}
 }

@@ -13,11 +13,11 @@ public class ServicioActualizarCliente {
 	}
 	
 	public void ejecutar(Cliente cliente) {
-		if (repositorioCliente.buscarPorId(cliente.getIdCliente()) == null) {
-			throw new ExcepcionGeneral(ExcepcionGeneral.NO_EXISTE_CLIENTE_A_ACTUALIZAR);
+		if(repositorioCliente.existeCliente(cliente)) {
+			this.repositorioCliente.actualizarCliente(cliente);
 		}
 		else {
-			this.repositorioCliente.actualizarCliente(cliente);
+			throw new ExcepcionGeneral(ExcepcionGeneral.NO_EXISTE_CLIENTE_A_ACTUALIZAR);
 		}
 	}
 }

@@ -38,6 +38,7 @@ class ControladorClienteTest {
 
 	private static final Long ID_PARA_TEST = 1L;
 	private static final Long ID_PARA_TEST_FALLAR = 2L;
+	private static final String CEDULA_PARA_TEST = "A";
 	
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -84,7 +85,7 @@ class ControladorClienteTest {
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
 		cliente.setNombre("JULIAN");
-		mockMvc.perform(put("/cliente/".concat((ID_PARA_TEST).toString()).concat("/actualizar"))
+		mockMvc.perform(put("/cliente/".concat((CEDULA_PARA_TEST).toString()).concat("/actualizar"))
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(cliente)))
 				.andDo(print())
