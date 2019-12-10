@@ -3,7 +3,6 @@ package com.ceiba.adn.tiendavideojuegos.infraestructura.adaptador.repositorio;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,16 +21,13 @@ public class RepositorioVideojuegoPostgres implements RepositorioVideojuego {
 	
 	private RepositorioVideojuegoJpa repositorioVideojuegoJpa;
 	
-	private ModelMapper modelMapper = new ModelMapper();
-
-	
 	public RepositorioVideojuegoPostgres(RepositorioVideojuegoJpa repositorioVideojuegoJpa) {
 		this.repositorioVideojuegoJpa = repositorioVideojuegoJpa;
 	}
 	
 	@Override
 	public void crearVideojuego(Videojuego videojuego) {
-		VideojuegoEntidad videojuegoEntidadCrear = modelMapper.map(videojuego, VideojuegoEntidad.class);
+		VideojuegoEntidad videojuegoEntidadCrear = convertirVideojuego.convertirVideojuegoDominioAVideojuegoEntidad(videojuego);
 		repositorioVideojuegoJpa.save(videojuegoEntidadCrear);
 	}
 
@@ -44,7 +40,7 @@ public class RepositorioVideojuegoPostgres implements RepositorioVideojuego {
 
 	@Override
 	public void actualizarVideojuego(Videojuego videojuego) {
-		VideojuegoEntidad videojuegoEntidadActualizar = modelMapper.map(videojuego, VideojuegoEntidad.class);
+		VideojuegoEntidad videojuegoEntidadActualizar = convertirVideojuego.convertirVideojuegoDominioAVideojuegoEntidad(videojuego);
 		repositorioVideojuegoJpa.save(videojuegoEntidadActualizar);		
 	}
 
@@ -56,6 +52,6 @@ public class RepositorioVideojuegoPostgres implements RepositorioVideojuego {
 	@Override
 	public VideojuegoDTO buscarPorId(Long idVideojuego) {
 		VideojuegoEntidad videojuegoEntidad = repositorioVideojuegoJpa.findById(idVideojuego).orElse(null);
-		return modelMapper.map(videojuegoEntidad, VideojuegoDTO.class);
+		return convertirVideojuego.convertirVideojuegoEntidadAVideojuegoDTO(videojuegoEntidad);
 	}
 }

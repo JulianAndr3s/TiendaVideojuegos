@@ -3,7 +3,6 @@ package com.ceiba.adn.tiendavideojuegos.infraestructura.adaptador.repositorio;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,15 +21,13 @@ public class RepositorioClientePostgres implements RepositorioCliente {
 	
 	private RepositorioClienteJpa repositorioClienteJpa;
 	
-	private ModelMapper modelMapper = new ModelMapper();
-	
 	public RepositorioClientePostgres (RepositorioClienteJpa repositorioClienteJpa) {
 		this.repositorioClienteJpa = repositorioClienteJpa;
 	}
 	
 	@Override
 	public void crearCliente(Cliente cliente) {
-		ClienteEntidad clienteEntidadCrear = modelMapper.map(cliente, ClienteEntidad.class);
+		ClienteEntidad clienteEntidadCrear = convertirCliente.convertirClienteDominioAClienteEntidad(cliente);
 		repositorioClienteJpa.save(clienteEntidadCrear);
 	}
 
@@ -43,7 +40,7 @@ public class RepositorioClientePostgres implements RepositorioCliente {
 
 	@Override
 	public void actualizarCliente(Cliente cliente) {
-		ClienteEntidad clienteEntidadActualizar = modelMapper.map(cliente, ClienteEntidad.class);
+		ClienteEntidad clienteEntidadActualizar = convertirCliente.convertirClienteDominioAClienteEntidad(cliente);
 		repositorioClienteJpa.save(clienteEntidadActualizar);
 	}
 
@@ -56,7 +53,7 @@ public class RepositorioClientePostgres implements RepositorioCliente {
 	public ClienteDTO buscarPorId(Long idCliente) {
 		ClienteEntidad clienteEntidad = repositorioClienteJpa.findById(idCliente).orElse(null);
 		if(clienteEntidad != null) {
-			return modelMapper.map(clienteEntidad, ClienteDTO.class);
+			return convertirCliente.convertirClienteEntidadAClienteDTO(clienteEntidad);
 		}
 		else {
 			return null;
@@ -67,7 +64,7 @@ public class RepositorioClientePostgres implements RepositorioCliente {
 	public ClienteDTO buscarPorCedula(String cedula) {
 		ClienteEntidad clienteEntidad = repositorioClienteJpa.findByCedula(cedula);
 		if(clienteEntidad != null) {
-			return modelMapper.map(clienteEntidad, ClienteDTO.class);
+			return convertirCliente.convertirClienteEntidadAClienteDTO(clienteEntidad);
 		}
 		else {
 			return null;
