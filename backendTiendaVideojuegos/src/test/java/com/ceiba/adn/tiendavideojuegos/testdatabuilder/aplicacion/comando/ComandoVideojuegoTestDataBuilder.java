@@ -9,7 +9,7 @@ public class ComandoVideojuegoTestDataBuilder {
 	private static final Long ID_VIDEOJUEGO = 1L;
 	private static final String NOMBRE = "Call of Duty";
 	private static final String GENERO = "Accion";
-	private static final LocalDate FECHA_LANZAMIENTO = LocalDate.of(2018, 05, 20);
+	private static final LocalDate FECHA_LANZAMIENTO = LocalDate.of(2018, 05, 21);
 	private static final Integer PRECIO = 250000;
 	private static final String AUTOR = "Activision";
 	
