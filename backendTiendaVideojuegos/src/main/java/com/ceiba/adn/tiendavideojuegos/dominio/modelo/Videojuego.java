@@ -20,6 +20,10 @@ public class Videojuego {
 		this.precio = precio;
 		this.autor = autor;
 	}
+	
+	public Videojuego() {
+		
+	}
 
 	public Long getIdVideojuego() {
 		return idVideojuego;

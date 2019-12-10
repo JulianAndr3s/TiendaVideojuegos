@@ -17,10 +17,10 @@ public class ReservaEntidad {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_reserva")
 	private Long idReserva;
-	@ManyToOne
+	@ManyToOne()
     @JoinColumn(name = "id_cliente")
     private ClienteEntidad cliente;
-	@ManyToOne
+	@ManyToOne()
     @JoinColumn(name = "id_videojuego")
     private VideojuegoEntidad videojuego;
 	

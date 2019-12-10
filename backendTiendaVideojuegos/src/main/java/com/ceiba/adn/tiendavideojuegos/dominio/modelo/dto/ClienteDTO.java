@@ -1,5 +1,7 @@
 package com.ceiba.adn.tiendavideojuegos.dominio.modelo.dto;
 
+import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Cliente;
+
 public class ClienteDTO {
 	
 	private Long idClienteDTO;
@@ -81,4 +83,9 @@ public class ClienteDTO {
 	public void setEstado(String estado) {
 		this.estadoDTO = estado;
 	}
+	
+	public Cliente construir(){
+		 return new Cliente(this.idClienteDTO,this.nombreDTO,this.apellidoDTO,
+				 this.telefonoDTO,this.correoDTO,this.cedulaDTO,this.estadoDTO);
+	 }
 }

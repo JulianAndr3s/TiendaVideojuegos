@@ -2,6 +2,8 @@ package com.ceiba.adn.tiendavideojuegos.dominio.modelo.dto;
 
 import java.time.LocalDate;
 
+import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Videojuego;
+
 public class VideojuegoDTO {
 	
 	private Long idVideojuegoDTO;
@@ -74,5 +76,10 @@ public class VideojuegoDTO {
 	public void setAutor(String autor) {
 		this.autorDTO = autor;
 	}
+	
+	public Videojuego construir(){
+		 return new Videojuego(this.idVideojuegoDTO,this.nombreDTO,this.generoDTO,
+				 this.fechaLanzamientoDTO,this.precioDTO,this.autorDTO);
+	 }
 
 }

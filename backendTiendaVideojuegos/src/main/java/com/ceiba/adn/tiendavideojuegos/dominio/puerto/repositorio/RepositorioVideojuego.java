@@ -13,4 +13,5 @@ public interface RepositorioVideojuego {
 	void eliminarVideojuego(Long idVideojuego);
 	VideojuegoDTO buscarPorId(Long idVideojuego);
 	boolean existeVideojuego(Videojuego videojuego);
+	VideojuegoDTO buscarPorNombre(String nombreVideojuego);
 }

@@ -20,6 +20,10 @@ public class Cliente {
 		this.cedula = cedula;
 		this.estado = estado;
 	}
+	
+	public Cliente() {
+		
+	}
 
 	public Long getIdCliente() {
 		return idCliente;
@@ -75,11 +79,5 @@ public class Cliente {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-	
-	
-	
-
-	
-	
+	}	
 }

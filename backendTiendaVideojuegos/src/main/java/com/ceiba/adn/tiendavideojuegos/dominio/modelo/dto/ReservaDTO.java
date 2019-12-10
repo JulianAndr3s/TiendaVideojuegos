@@ -6,16 +6,9 @@ public class ReservaDTO {
 	private Long idReservaDTO;
 	private ClienteDTO clienteDTO;
 	private VideojuegoDTO videojuegoDTO;
-	
-	public ReservaDTO(Long idReservaDTO, ClienteDTO clienteDTO, VideojuegoDTO videojuegoDTO) {
-		super();
-		this.idReservaDTO = idReservaDTO;
-		this.clienteDTO = clienteDTO;
-		this.videojuegoDTO = videojuegoDTO;
-	}
 
 	public ReservaDTO() {
-
+		super();
 	}
 
 	public Long getIdReserva() {

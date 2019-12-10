@@ -58,4 +58,17 @@ public class RepositorioVideojuegoPostgres implements RepositorioVideojuego {
 		String nombreVideojuego = videojuego.getNombre();
 		return (repositorioVideojuegoJpa.findByNombre(nombreVideojuego)) != null;
 	}
+
+	@Override
+	public VideojuegoDTO buscarPorNombre(String nombreVideojuego) {
+		VideojuegoEntidad videojuegoEntidad = repositorioVideojuegoJpa.findByNombre(nombreVideojuego);
+		if (videojuegoEntidad != null) {
+			return convertirVideojuego.convertirVideojuegoEntidadAVideojuegoDTO(videojuegoEntidad);
+		}
+		else {
+			return null;
+		}
+	}
+	
+	
 }
