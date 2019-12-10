@@ -1,5 +1,7 @@
 package com.ceiba.adn.tiendavideojuegos.dominio.servicios.videojuego;
 
+import com.ceiba.adn.tiendavideojuegos.dominio.excepcion.ExcepcionGeneral;
+import com.ceiba.adn.tiendavideojuegos.dominio.modelo.dto.VideojuegoDTO;
 import com.ceiba.adn.tiendavideojuegos.dominio.puerto.repositorio.RepositorioVideojuego;
 
 public class ServicioEliminarVideojuego {
@@ -10,7 +12,14 @@ public class ServicioEliminarVideojuego {
 		this.repositorioVideojuego = repositorioVideojuego;
 	}
 	
-	public void ejecutar(Long idVideojuego) {
-		this.repositorioVideojuego.eliminarVideojuego(idVideojuego);
+	public boolean ejecutar(Long idVideojuego) {
+		VideojuegoDTO videojuegoDTO = repositorioVideojuego.buscarPorId(idVideojuego);
+		if(videojuegoDTO != null) {
+			this.repositorioVideojuego.eliminarVideojuego(idVideojuego);
+			return true;
+		}
+		else {
+			throw new ExcepcionGeneral(ExcepcionGeneral.NO_EXISTE_VIDEOJUEGO);
+		}
 	}
 }

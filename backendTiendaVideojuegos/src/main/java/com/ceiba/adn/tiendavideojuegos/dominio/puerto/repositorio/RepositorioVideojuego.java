@@ -12,4 +12,5 @@ public interface RepositorioVideojuego {
 	void actualizarVideojuego(Videojuego videojuego);
 	void eliminarVideojuego(Long idVideojuego);
 	VideojuegoDTO buscarPorId(Long idVideojuego);
+	boolean existeVideojuego(Videojuego videojuego);
 }

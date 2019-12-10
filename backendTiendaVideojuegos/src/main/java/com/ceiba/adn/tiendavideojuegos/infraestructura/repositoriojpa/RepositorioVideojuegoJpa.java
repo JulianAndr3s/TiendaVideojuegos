@@ -10,4 +10,6 @@ import com.ceiba.adn.tiendavideojuegos.infraestructura.entidad.VideojuegoEntidad
 @Repository
 public interface RepositorioVideojuegoJpa extends JpaRepository<VideojuegoEntidad, Serializable> {
 
+	VideojuegoEntidad findByNombre(String nombre);
+	
 }

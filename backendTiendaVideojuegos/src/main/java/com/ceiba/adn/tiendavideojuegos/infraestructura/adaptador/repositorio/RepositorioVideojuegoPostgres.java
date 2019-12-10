@@ -52,4 +52,10 @@ public class RepositorioVideojuegoPostgres implements RepositorioVideojuego {
 		VideojuegoEntidad videojuegoEntidad = repositorioVideojuegoJpa.findById(idVideojuego).orElse(null);
 		return convertirVideojuego.convertirVideojuegoEntidadAVideojuegoDTO(videojuegoEntidad);
 	}
+
+	@Override
+	public boolean existeVideojuego(Videojuego videojuego) {
+		String nombreVideojuego = videojuego.getNombre();
+		return (repositorioVideojuegoJpa.findByNombre(nombreVideojuego)) != null;
+	}
 }
