@@ -3,7 +3,6 @@ package com.ceiba.adn.tiendavideojuegos.infraestructura.adaptador.repositorio;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Videojuego;
@@ -15,12 +14,11 @@ import com.ceiba.adn.tiendavideojuegos.infraestructura.repositoriojpa.Repositori
 
 @Repository
 public class RepositorioVideojuegoPostgres implements RepositorioVideojuego {
-	
-	@Autowired
-	private ConvertirVideojuego convertirVideojuego;
-	
+
 	private RepositorioVideojuegoJpa repositorioVideojuegoJpa;
 	
+	private ConvertirVideojuego convertirVideojuego = new ConvertirVideojuego();
+		
 	public RepositorioVideojuegoPostgres(RepositorioVideojuegoJpa repositorioVideojuegoJpa) {
 		this.repositorioVideojuegoJpa = repositorioVideojuegoJpa;
 	}
