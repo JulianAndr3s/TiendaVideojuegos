@@ -150,19 +150,6 @@ class ControladorClienteTest {
 	}
 
 	@Test
-	void excepcionEliminarClienteTest() throws Exception {
-		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-		try {
-			mockMvc.perform(delete("/cliente/".concat((ID_PARA_TEST).toString()).concat("/eliminar"))
-					.contentType(MediaType.TEXT_PLAIN)
-					.content(objectMapper.writeValueAsString(comandoCliente.getIdCliente())))
-					.andExpect(status().is4xxClientError());
-		} catch(Exception excepcionTest) {
-			System.out.println(excepcionTest.getCause().getMessage());
-		}
-	}
-
-	@Test
 	void excepcionCrearClienteTest() throws Exception {
 		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
@@ -176,6 +163,4 @@ class ControladorClienteTest {
 			System.out.println(excepcionTest.getCause().getMessage());
 		}
 	}
-	
-	
 }
