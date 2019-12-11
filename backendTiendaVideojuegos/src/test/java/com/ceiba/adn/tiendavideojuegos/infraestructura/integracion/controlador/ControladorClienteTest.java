@@ -39,8 +39,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Transactional
 class ControladorClienteTest {
 
-
-	private static final Long ID_PARA_TEST = 5L;
 	private static final String CEDULA_PARA_TEST = "1036";
 	private static final String NOMBRE_CLIENTE_TEST = "JulianActualizar";
 
@@ -87,14 +85,14 @@ class ControladorClienteTest {
 	}
 	
 	@Test
-	public void actualizarVideojuegoTest() throws Exception {
+	public void actualizarClienteTest() throws Exception {
 		Cliente cliente = new Cliente(5L,"J","U","L","I","A","N");
 		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
 		
 		repositorioClientePostgres.crearCliente(cliente);
 		cliente.setNombre(NOMBRE_CLIENTE_TEST);
 
-		mockMvc.perform(put("/videojuego/".concat(ID_PARA_TEST.toString()))
+		mockMvc.perform(put("/cliente/5")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(cliente)))
 				.andDo(print())
