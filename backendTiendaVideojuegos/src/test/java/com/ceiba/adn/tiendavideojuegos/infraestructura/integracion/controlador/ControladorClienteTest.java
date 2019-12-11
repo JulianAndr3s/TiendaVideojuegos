@@ -56,40 +56,7 @@ class ControladorClienteTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
     }
 	
-	@Test
-	public void crearClienteTest() throws Exception {
-		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-		mockMvc.perform(post("/cliente")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(comandoCliente)))
-				.andDo(print())
-				.andExpect(status().isOk());
-	}
 	
-	@Test
-	public void eliminarClienteTest() throws Exception {
-		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
-		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
-		repositorioClienteImpl.crearCliente(cliente);
-		mockMvc.perform(delete("/cliente/A")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(cliente)))
-				.andDo(print())
-				.andExpect(status().isOk());
-	}
-	
-	@Test
-	public void actualizarClienteTest() throws Exception {
-		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
-		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
-		repositorioClienteImpl.crearCliente(cliente);
-		cliente.setNombre("JULIAN");
-		mockMvc.perform(put("/cliente/A")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(cliente)))
-				.andDo(print())
-				.andExpect(status().isOk());	
-	}
 	
 	@Test
 	public void listarClienteTest() throws Exception {
