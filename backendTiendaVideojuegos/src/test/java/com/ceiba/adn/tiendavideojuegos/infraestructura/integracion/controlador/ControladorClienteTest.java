@@ -28,6 +28,7 @@ import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Cliente;
 import com.ceiba.adn.tiendavideojuegos.infraestructura.adaptador.repositorio.RepositorioClientePostgres;
 import com.ceiba.adn.tiendavideojuegos.infraestructura.repositoriojpa.RepositorioClienteJpa;
 import com.ceiba.adn.tiendavideojuegos.testdatabuilder.aplicacion.comando.ComandoClienteTestDataBuilder;
+import com.ceiba.adn.tiendavideojuegos.testdatabuilder.dominio.modelo.ClienteTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
@@ -36,8 +37,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @TestPropertySource("/test.properties")
 class ControladorClienteTest {
 
-	private static final Long ID_PARA_TEST = 1L;
-	private static final Long ID_PARA_TEST_FALLAR = 2L;
+	private static final String CEDULA_PARA_TEST = "1036402404";
+	private static final String NOMBRE_CLIENTE_TEST = "JulianActualizar";
 	
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -63,6 +64,22 @@ class ControladorClienteTest {
 		mockMvc.perform(post("/cliente")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(comandoCliente)))
+				.andDo(print())
+				.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void actualizarVideojuegoTest() throws Exception {
+		Cliente cliente = new ClienteTestDataBuilder().build();
+		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
+		
+		repositorioClientePostgres.crearCliente(cliente);
+		
+		cliente.setNombre(NOMBRE_CLIENTE_TEST);
+		
+		mockMvc.perform(put("/cliente/".concat(CEDULA_PARA_TEST))
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(cliente)))
 				.andDo(print())
 				.andExpect(status().isOk());
 	}
