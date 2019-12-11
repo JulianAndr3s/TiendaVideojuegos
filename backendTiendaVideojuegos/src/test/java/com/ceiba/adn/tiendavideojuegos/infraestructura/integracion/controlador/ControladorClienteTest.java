@@ -62,17 +62,13 @@ class ControladorClienteTest {
 	@Test
 	public void crearClienteTest() throws Exception {
 		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-		
-		try {
+
 		mockMvc.perform(post("/cliente")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(comandoCliente)))
 				.andDo(print())
 				.andExpect(status().isOk());
-		}
-		catch(Exception excepcionTest) {
-			System.out.println(excepcionTest.getCause().getMessage());
-		}
+		
 	}
 	
 	@Test
