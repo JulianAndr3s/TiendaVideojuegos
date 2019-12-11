@@ -1,6 +1,5 @@
 package com.ceiba.adn.tiendavideojuegos.infraestructura.integracion.controlador;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -8,9 +7,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
-
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
 
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -42,8 +38,7 @@ class ControladorClienteTest {
 
 	private static final String CEDULA_PARA_TEST = "1036402404";
 	private static final String NOMBRE_CLIENTE_TEST = "JulianActualizar";
-	private static final Long ID_PARA_TEST = 1L;
-	private static final Long ID_PARA_TEST_FALLAR = 2L;
+
 	
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -109,21 +104,6 @@ class ControladorClienteTest {
 					.andDo(print())
 					.andExpect(status().isOk());
 
-	}
-	
-	@Test
-	void excepcionActualizarClienteTest() throws Exception {
-		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
-		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
-		repositorioClientePostgres.crearCliente(cliente);
-		try {	
-			mockMvc.perform(put("/cliente/".concat((ID_PARA_TEST_FALLAR).toString()).concat("/actualizar"))
-					.contentType(MediaType.APPLICATION_JSON)
-					.content(objectMapper.writeValueAsString(cliente)))
-					.andExpect(status().is4xxClientError());
-		} catch(Exception excepcionTest){
-			System.out.println(excepcionTest.getCause().getMessage());
-		}
 	}
 
 	@Test
