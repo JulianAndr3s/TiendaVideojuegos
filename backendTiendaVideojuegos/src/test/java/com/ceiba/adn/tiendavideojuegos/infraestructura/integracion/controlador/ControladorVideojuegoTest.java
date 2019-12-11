@@ -10,8 +10,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import javax.transaction.Transactional;
-
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -81,6 +79,20 @@ class ControladorVideojuegoTest {
 
 		
 		mockMvc.perform(put("/videojuego/".concat(ID_PARA_TEST.toString()))
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(videojuego)))
+				.andDo(print())
+				.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void eliminarVideojuegoTest() throws Exception {
+		Videojuego videojuego = new VideojuegoTestDataBuilder().build();
+		
+		RepositorioVideojuegoPostgres repositorioVideojuegoPostgres = new RepositorioVideojuegoPostgres(repositorioVideojuegoJpa);
+		
+		repositorioVideojuegoPostgres.crearVideojuego(videojuego);
+		mockMvc.perform(delete("/videojuego/".concat(NOMBRE_JUEGO_TEST))
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(videojuego)))
 				.andDo(print())
