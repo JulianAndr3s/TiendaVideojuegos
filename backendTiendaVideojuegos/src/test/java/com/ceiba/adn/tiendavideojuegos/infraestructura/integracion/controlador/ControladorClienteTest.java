@@ -57,7 +57,7 @@ class ControladorClienteTest {
     }
 	
 	@Test
-	void crearClienteTest() throws Exception {
+	public void crearClienteTest() throws Exception {
 		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
 		mockMvc.perform(post("/cliente")
 				.contentType(MediaType.APPLICATION_JSON)
@@ -67,7 +67,7 @@ class ControladorClienteTest {
 	}
 	
 	@Test
-	void eliminarClienteTest() throws Exception {
+	public void eliminarClienteTest() throws Exception {
 		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
@@ -79,7 +79,7 @@ class ControladorClienteTest {
 	}
 	
 	@Test
-	void actualizarClienteTest() throws Exception {
+	public void actualizarClienteTest() throws Exception {
 		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
@@ -92,7 +92,7 @@ class ControladorClienteTest {
 	}
 	
 	@Test
-	void listarClienteTest() throws Exception {
+	public void listarClienteTest() throws Exception {
 		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		Cliente cliente2 = new Cliente(2L,"J","U","L","I","A","N");
@@ -109,48 +109,4 @@ class ControladorClienteTest {
 				.andDo(print())
 				.andExpect(status().isOk());
 	}
-	
-	@Test
-	void excepcionActualizarClienteTest() throws Exception {
-		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
-		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
-		repositorioClienteImpl.crearCliente(cliente);
-		try {	
-			mockMvc.perform(put("/cliente/1")
-					.contentType(MediaType.APPLICATION_JSON)
-					.content(objectMapper.writeValueAsString(cliente)))
-					.andExpect(status().isInternalServerError());
-		} catch(Exception excepcionTest){
-			System.out.println(excepcionTest.getCause().getMessage());
-		}
-	}
-	
-	@Test
-	void excepcionEliminarClienteTest() throws Exception {
-		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-		try {
-			mockMvc.perform(delete("/cliente/1")
-					.contentType(MediaType.TEXT_PLAIN)
-					.content(objectMapper.writeValueAsString(comandoCliente.getIdCliente())))
-					.andExpect(status().isInternalServerError());
-		} catch(Exception excepcionTest) {
-			System.out.println(excepcionTest.getCause().getMessage());
-		}
-	}
-	
-	@Test
-	void excepcionCrearClienteTest() throws Exception {
-		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
-		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
-		repositorioClienteImpl.crearCliente(cliente);
-		try {	
-			mockMvc.perform(post("/cliente")
-					.contentType(MediaType.APPLICATION_JSON)
-					.content(objectMapper.writeValueAsString(cliente)))
-					.andExpect(status().isInternalServerError());
-		} catch(Exception excepcionTest){
-			System.out.println(excepcionTest.getCause().getMessage());
-		}
-	}
-	
 }
