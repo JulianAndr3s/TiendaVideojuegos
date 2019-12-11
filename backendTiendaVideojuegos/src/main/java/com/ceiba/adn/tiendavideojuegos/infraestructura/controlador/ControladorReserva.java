@@ -31,17 +31,17 @@ public class ControladorReserva {
 		this.manejadorListarReservas = manejadorListarReservas;
 	}
 	
-	@PostMapping("/crear")
+	@PostMapping
 	public void crearReserva(@RequestBody ComandoReserva comandoReserva) {
 		this.manejadorCrearReserva.ejecutar(comandoReserva);
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public List<ReservaDTO> listarReservas() {
 		return this.manejadorListarReservas.ejecutar();
 	}
 	
-	@DeleteMapping("/{idReserva}/eliminar")
+	@DeleteMapping("/{idReserva}")
 	public void eliminarReserva(@PathVariable Long idReserva) {
 		this.manejadorEliminarReserva.ejecutar(idReserva);		
 	}

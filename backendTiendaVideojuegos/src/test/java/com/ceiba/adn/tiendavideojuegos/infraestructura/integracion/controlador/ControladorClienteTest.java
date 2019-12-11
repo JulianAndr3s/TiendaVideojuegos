@@ -38,7 +38,6 @@ class ControladorClienteTest {
 
 	private static final Long ID_PARA_TEST = 1L;
 	private static final Long ID_PARA_TEST_FALLAR = 2L;
-	private static final String CEDULA_PARA_TEST = "A";
 	
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -60,7 +59,7 @@ class ControladorClienteTest {
 	@Test
 	void crearClienteTest() throws Exception {
 		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-		mockMvc.perform(post("/cliente/crear")
+		mockMvc.perform(post("/cliente")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(comandoCliente)))
 				.andDo(print())
@@ -72,7 +71,7 @@ class ControladorClienteTest {
 		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
-		mockMvc.perform(delete("/cliente/".concat((ID_PARA_TEST).toString()).concat("/eliminar"))
+		mockMvc.perform(delete("/cliente/A")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(cliente)))
 				.andDo(print())
@@ -85,7 +84,7 @@ class ControladorClienteTest {
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
 		cliente.setNombre("JULIAN");
-		mockMvc.perform(put("/cliente/".concat((CEDULA_PARA_TEST).toString()).concat("/actualizar"))
+		mockMvc.perform(put("/cliente/A")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(cliente)))
 				.andDo(print())
@@ -104,7 +103,7 @@ class ControladorClienteTest {
 		clientes.add(cliente);
 		clientes.add(cliente2);
 		
-		mockMvc.perform(get("/cliente/listar")
+		mockMvc.perform(get("/cliente")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(clientes)))
 				.andDo(print())
@@ -117,7 +116,7 @@ class ControladorClienteTest {
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
 		try {	
-			mockMvc.perform(put("/cliente/".concat((ID_PARA_TEST_FALLAR).toString()).concat("/actualizar"))
+			mockMvc.perform(put("/cliente/1")
 					.contentType(MediaType.APPLICATION_JSON)
 					.content(objectMapper.writeValueAsString(cliente)))
 					.andExpect(status().isInternalServerError());
@@ -130,7 +129,7 @@ class ControladorClienteTest {
 	void excepcionEliminarClienteTest() throws Exception {
 		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
 		try {
-			mockMvc.perform(delete("/cliente/".concat((ID_PARA_TEST).toString()).concat("/eliminar"))
+			mockMvc.perform(delete("/cliente/1")
 					.contentType(MediaType.TEXT_PLAIN)
 					.content(objectMapper.writeValueAsString(comandoCliente.getIdCliente())))
 					.andExpect(status().isInternalServerError());
@@ -145,7 +144,7 @@ class ControladorClienteTest {
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		repositorioClienteImpl.crearCliente(cliente);
 		try {	
-			mockMvc.perform(post("/cliente/crear")
+			mockMvc.perform(post("/cliente")
 					.contentType(MediaType.APPLICATION_JSON)
 					.content(objectMapper.writeValueAsString(cliente)))
 					.andExpect(status().isInternalServerError());

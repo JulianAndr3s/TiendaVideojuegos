@@ -13,8 +13,8 @@ public class ManejadorEliminarCliente {
 		this.servicioEliminarCliente = servicioEliminarCliente;
 	}
 	
-	public void ejecutar(Long idCliente) {
-		this.servicioEliminarCliente.ejecutar(idCliente);
+	public void ejecutar(String cedula) {
+		this.servicioEliminarCliente.ejecutar(cedula);
 	}
 	
 }

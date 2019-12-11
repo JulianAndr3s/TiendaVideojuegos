@@ -13,10 +13,10 @@ public class ServicioEliminarCliente {
 		this.repositorioCliente = repositorioCliente;
 	}
 	
-	public boolean ejecutar(Long idCliente) {
-		ClienteDTO clienteDTO = repositorioCliente.buscarPorId(idCliente);
+	public boolean ejecutar(String cedula) {
+		ClienteDTO clienteDTO = repositorioCliente.buscarPorCedula(cedula);
 		if (clienteDTO != null) {
-			this.repositorioCliente.eliminarCliente(idCliente);
+			this.repositorioCliente.eliminarCliente(clienteDTO.getIdCliente());
 			return true;
 		}
 		else {

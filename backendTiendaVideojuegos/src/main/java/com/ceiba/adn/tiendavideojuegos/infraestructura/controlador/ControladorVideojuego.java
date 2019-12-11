@@ -37,23 +37,23 @@ public class ControladorVideojuego {
 		this.manejadorListarVideojuegos = manejadorListarVideojuegos;
 	}
 	
-	@PostMapping("/crear")
+	@PostMapping
 	public void crearVideojuego(@RequestBody ComandoVideojuego comandoVideojuego) {
 		this.manejadorCrearVideojuego.ejecutar(comandoVideojuego);
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public List<VideojuegoDTO> listarVideojuegos() {
 		return this.manejadorListarVideojuegos.ejecutar();
 	}
 	
-	@PutMapping("/{idVideojuego}/actualizar")
+	@PutMapping("/{idVideojuego}")
 	public void actualizarVideojuego(@RequestBody ComandoVideojuego comandoVideojuego,
 			@PathVariable Long idVideojuego) {
 		this.manejadorActualizarVideojuego.ejecutar(comandoVideojuego, idVideojuego);
 	}
 	
-	@DeleteMapping("/{idVideojuego}/eliminar")
+	@DeleteMapping("/{idVideojuego}")
 	public void eliminarVideojuego(@PathVariable Long idVideojuego) {
 		this.manejadorEliminarVideojuego.ejecutar(idVideojuego);		
 	}

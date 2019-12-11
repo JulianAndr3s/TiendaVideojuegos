@@ -2,6 +2,7 @@ package com.ceiba.adn.tiendavideojuegos.dominio.servicios.cliente;
 
 import com.ceiba.adn.tiendavideojuegos.dominio.excepcion.ExcepcionGeneral;
 import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Cliente;
+import com.ceiba.adn.tiendavideojuegos.dominio.modelo.dto.ClienteDTO;
 import com.ceiba.adn.tiendavideojuegos.dominio.puerto.repositorio.RepositorioCliente;
 
 public class ServicioActualizarCliente {
@@ -12,8 +13,10 @@ public class ServicioActualizarCliente {
 		this.repositorioCliente = repositorioCliente;
 	}
 	
-	public void ejecutar(Cliente cliente) {
-		if(repositorioCliente.existeCliente(cliente)) {
+	public void ejecutar(Cliente cliente, String cedula) {
+		ClienteDTO clienteDTO = repositorioCliente.buscarPorCedula(cedula);
+		if (clienteDTO != null) {
+			cliente.setIdCliente(clienteDTO.getIdCliente());
 			this.repositorioCliente.actualizarCliente(cliente);
 		}
 		else {

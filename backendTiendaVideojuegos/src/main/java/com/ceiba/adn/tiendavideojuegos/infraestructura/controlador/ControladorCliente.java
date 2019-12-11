@@ -36,23 +36,23 @@ public class ControladorCliente {
 		this.manejadorEliminarCliente = manejadorEliminarCliente;
 	}
 	
-	@PostMapping("/crear")
+	@PostMapping
 	public void crearCliente(@RequestBody ComandoCliente comandoCliente) {
 		this.manejadorCrearCliente.ejecutar(comandoCliente);
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public List<ClienteDTO> listarClientes() {
 		return this.manejadorListarCliente.ejecutar();
 	}
 	
-	@PutMapping("/{cedula}/actualizar")
+	@PutMapping(value = "/{cedula}")
 	public void actualizarCliente(@RequestBody ComandoCliente comandoCliente, @PathVariable String cedula) {
 		this.manejadorActualizarCliente.ejecutar(comandoCliente, cedula);
 	}
 	
-	@DeleteMapping("/{idCliente}/eliminar")
-	public void eliminarCliente(@PathVariable Long idCliente) {
-		this.manejadorEliminarCliente.ejecutar(idCliente);		
+	@DeleteMapping(value = "/{cedula}")
+	public void eliminarCliente(@PathVariable String cedula) {
+		this.manejadorEliminarCliente.ejecutar(cedula);		
 	}
 }

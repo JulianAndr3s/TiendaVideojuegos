@@ -20,8 +20,6 @@ public class ManejadorActualizarCliente {
 	
 	public void ejecutar(ComandoCliente comandoCliente, String cedula) {
 		Cliente cliente = this.fabricaCliente.crear(comandoCliente);
-		cliente.setIdCliente(comandoCliente.getIdCliente());
-		cliente.setCedula(cedula);
-		this.servicioActualizarCliente.ejecutar(cliente);
+		this.servicioActualizarCliente.ejecutar(cliente, cedula);
 	}
 }
