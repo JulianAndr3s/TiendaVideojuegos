@@ -1,5 +1,6 @@
 package com.ceiba.adn.tiendavideojuegos.infraestructura.integracion.controlador;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -38,6 +39,8 @@ class ControladorClienteTest {
 
 	private static final String CEDULA_PARA_TEST = "1036402404";
 	private static final String NOMBRE_CLIENTE_TEST = "JulianActualizar";
+	private static final Long ID_PARA_TEST = 1L;
+	private static final Long ID_PARA_TEST_FALLAR = 2L;
 	
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -92,13 +95,32 @@ class ControladorClienteTest {
 		}
 	}
 	
+
+	@Test
+	public void eliminarClienteTest() throws Exception {
+		Cliente cliente = new ClienteTestDataBuilder().build();
+		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
+		
+		repositorioClientePostgres.crearCliente(cliente);
+		try {
+		mockMvc.perform(delete("/cliente/1036402404")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(cliente)))
+				.andDo(print())
+				.andExpect(status().isOk());
+		}
+		catch(Exception excepcionTest) {
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
+	}
+	
 	@Test
 	public void listarClienteTest() throws Exception {
-		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
+		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
 		Cliente cliente2 = new Cliente(2L,"J","U","L","I","A","N");
-		repositorioClienteImpl.crearCliente(cliente);
-		repositorioClienteImpl.crearCliente(cliente2);
+		repositorioClientePostgres.crearCliente(cliente);
+		repositorioClientePostgres.crearCliente(cliente2);
 		
 		ArrayList<Cliente> clientes = new ArrayList<>();
 		clientes.add(cliente);
@@ -110,6 +132,49 @@ class ControladorClienteTest {
 					.andDo(print())
 					.andExpect(status().isOk());
 
+	}
+	
+	@Test
+	void excepcionActualizarClienteTest() throws Exception {
+		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
+		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
+		repositorioClientePostgres.crearCliente(cliente);
+		try {	
+			mockMvc.perform(put("/cliente/".concat((ID_PARA_TEST_FALLAR).toString()).concat("/actualizar"))
+					.contentType(MediaType.APPLICATION_JSON)
+					.content(objectMapper.writeValueAsString(cliente)))
+					.andExpect(status().is4xxClientError());
+		} catch(Exception excepcionTest){
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
+	}
+
+	@Test
+	void excepcionEliminarClienteTest() throws Exception {
+		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
+		try {
+			mockMvc.perform(delete("/cliente/".concat((ID_PARA_TEST).toString()).concat("/eliminar"))
+					.contentType(MediaType.TEXT_PLAIN)
+					.content(objectMapper.writeValueAsString(comandoCliente.getIdCliente())))
+					.andExpect(status().is4xxClientError());
+		} catch(Exception excepcionTest) {
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
+	}
+
+	@Test
+	void excepcionCrearClienteTest() throws Exception {
+		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
+		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
+		repositorioClientePostgres.crearCliente(cliente);
+		try {	
+			mockMvc.perform(post("/cliente/crear")
+					.contentType(MediaType.APPLICATION_JSON)
+					.content(objectMapper.writeValueAsString(cliente)))
+					.andExpect(status().is4xxClientError());
+		} catch(Exception excepcionTest){
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
 	}
 	
 	
