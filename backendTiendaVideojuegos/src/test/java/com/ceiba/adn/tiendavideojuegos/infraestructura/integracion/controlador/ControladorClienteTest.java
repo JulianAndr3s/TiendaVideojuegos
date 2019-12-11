@@ -60,17 +60,6 @@ class ControladorClienteTest {
     }
 	
 	@Test
-	public void crearClienteTest() throws Exception {
-		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-		
-		mockMvc.perform(post("/cliente")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(comandoCliente)))
-				.andDo(print())
-				.andExpect(status().isOk());
-	}
-	
-	@Test
 	public void listarClienteTest() throws Exception {
 		RepositorioClientePostgres repositorioClienteImpl = new RepositorioClientePostgres(repositorioClienteJpa);
 		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
