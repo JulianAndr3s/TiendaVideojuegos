@@ -13,7 +13,7 @@ public class ManejadorEliminarVideojuego {
 		this.servicioEliminarVideojuego = servicioEliminarVideojuego;	
 	}
 	
-	public void ejecutar(Long idVideojuego) {
-		this.servicioEliminarVideojuego.ejecutar(idVideojuego);
+	public void ejecutar(String nombreVideojuego) {
+		this.servicioEliminarVideojuego.ejecutar(nombreVideojuego);
 	}
 }

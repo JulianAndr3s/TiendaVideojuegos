@@ -12,11 +12,10 @@ public class ServicioEliminarVideojuego {
 		this.repositorioVideojuego = repositorioVideojuego;
 	}
 	
-	public boolean ejecutar(Long idVideojuego) {
-		VideojuegoDTO videojuegoDTO = repositorioVideojuego.buscarPorId(idVideojuego);
+	public void ejecutar(String nombreVideojuego) {
+		VideojuegoDTO videojuegoDTO = repositorioVideojuego.buscarPorNombre(nombreVideojuego);
 		if(videojuegoDTO != null) {
-			this.repositorioVideojuego.eliminarVideojuego(idVideojuego);
-			return true;
+			this.repositorioVideojuego.eliminarVideojuego(videojuegoDTO.getIdVideojuego());
 		}
 		else {
 			throw new ExcepcionGeneral(ExcepcionGeneral.NO_EXISTE_VIDEOJUEGO);

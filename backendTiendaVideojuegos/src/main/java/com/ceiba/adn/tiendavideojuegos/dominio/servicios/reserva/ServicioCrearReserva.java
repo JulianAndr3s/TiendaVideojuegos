@@ -21,8 +21,8 @@ public class ServicioCrearReserva {
 	}
 	
 	public void ejecutar(Reserva reserva) {
-		ClienteDTO clienteDTO = repositorioCliente.buscarPorId(reserva.getCliente().getIdCliente());
-		VideojuegoDTO videojuegoDTO = repositorioVideojuego.buscarPorId(reserva.getVideojuego().getIdVideojuego()); 
+		ClienteDTO clienteDTO = repositorioCliente.buscarPorCedula(reserva.getCliente().getCedula());
+		VideojuegoDTO videojuegoDTO = repositorioVideojuego.buscarPorNombre(reserva.getVideojuego().getNombre()); 
 		reserva.setCliente(clienteDTO.construir());
 		reserva.setVideojuego(videojuegoDTO.construir());
 		this.repositorioReserva.crearReserva(reserva);		

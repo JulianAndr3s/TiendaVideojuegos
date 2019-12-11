@@ -53,9 +53,9 @@ public class ControladorVideojuego {
 		this.manejadorActualizarVideojuego.ejecutar(comandoVideojuego, idVideojuego);
 	}
 	
-	@DeleteMapping("/{idVideojuego}")
-	public void eliminarVideojuego(@PathVariable Long idVideojuego) {
-		this.manejadorEliminarVideojuego.ejecutar(idVideojuego);		
+	@DeleteMapping("/{nombreVideojuego}")
+	public void eliminarVideojuego(@PathVariable String nombreVideojuego) {
+		this.manejadorEliminarVideojuego.ejecutar(nombreVideojuego);		
 	}
 
 }
