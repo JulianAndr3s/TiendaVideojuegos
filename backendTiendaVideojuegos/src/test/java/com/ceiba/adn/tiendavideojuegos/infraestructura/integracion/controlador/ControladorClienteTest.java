@@ -111,4 +111,21 @@ class ControladorClienteTest {
 					.andExpect(status().isOk());
 
 	}
+	
+	@Test
+	void excepcionCrearClienteTest() throws Exception {
+		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
+		Cliente cliente = new Cliente(1L,"J","U","L","I","A","N");
+		repositorioClientePostgres.crearCliente(cliente);
+		try {	
+			mockMvc.perform(post("/cliente")
+					.contentType(MediaType.APPLICATION_JSON)
+					.content(objectMapper.writeValueAsString(cliente)))
+					.andExpect(status().is5xxServerError());
+		} catch(Exception excepcionTest){
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
+	}
+	
+	
 }
