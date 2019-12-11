@@ -12,13 +12,12 @@ public class ServicioCrearVideojuego {
 		this.repositorioVideojuego = repositorioVideojuego;
 	}
 	
-	public boolean ejecutar(Videojuego videojuego) {
+	public void ejecutar(Videojuego videojuego) {
 		if(repositorioVideojuego.existeVideojuego(videojuego)) {
 			throw new ExcepcionGeneral(ExcepcionGeneral.YA_EXISTE_VIDEOJUEGO);
 		}
 		else {
 			this.repositorioVideojuego.crearVideojuego(videojuego);
-			return true;
 		}
 	}
 }

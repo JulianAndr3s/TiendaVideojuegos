@@ -46,9 +46,9 @@ public class ControladorCliente {
 		return this.manejadorListarCliente.ejecutar();
 	}
 	
-	@PutMapping(value = "/{cedula}")
-	public void actualizarCliente(@RequestBody ComandoCliente comandoCliente, @PathVariable String cedula) {
-		this.manejadorActualizarCliente.ejecutar(comandoCliente, cedula);
+	@PutMapping(value = "/{idCliente}")
+	public void actualizarCliente(@RequestBody ComandoCliente comandoCliente, @PathVariable Long idCliente) {
+		this.manejadorActualizarCliente.ejecutar(comandoCliente, idCliente);
 	}
 	
 	@DeleteMapping(value = "/{cedula}")
