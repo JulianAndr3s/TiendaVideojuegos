@@ -36,7 +36,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest(classes = BackendTiendaVideojuegosApplication.class)
 @AutoConfigureMockMvc
 @TestPropertySource("/test.properties")
-@Transactional
 class ControladorClienteTest {
 
 	private static final String CEDULA_PARA_TEST = "1036";
@@ -90,7 +89,6 @@ class ControladorClienteTest {
 		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
 		
 		repositorioClientePostgres.crearCliente(cliente);
-		cliente.setNombre(NOMBRE_CLIENTE_TEST);
 
 		mockMvc.perform(put("/cliente/5")
 				.contentType(MediaType.APPLICATION_JSON)
