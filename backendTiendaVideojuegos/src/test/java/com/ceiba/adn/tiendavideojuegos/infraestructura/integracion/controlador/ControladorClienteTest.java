@@ -9,8 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.ArrayList;
 
-import javax.transaction.Transactional;
-
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -66,6 +64,36 @@ class ControladorClienteTest {
 		mockMvc.perform(post("/cliente")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(comandoCliente)))
+				.andDo(print())
+				.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void actualizarClienteTest() throws Exception {
+		Cliente cliente = new ClienteTestDataBuilder().build();
+		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
+		
+		repositorioClientePostgres.crearCliente(cliente);
+		
+		cliente.setNombre(NOMBRE_CLIENTE_TEST);
+		
+		mockMvc.perform(put("/cliente/".concat(CEDULA_PARA_TEST))
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(cliente)))
+				.andDo(print())
+				.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void eliminarClienteTest() throws Exception {
+		Cliente cliente = new ClienteTestDataBuilder().build();
+		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
+		
+		repositorioClientePostgres.crearCliente(cliente);
+		
+		mockMvc.perform(delete("/cliente/".concat(CEDULA_PARA_TEST))
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(cliente)))
 				.andDo(print())
 				.andExpect(status().isOk());
 	}
