@@ -9,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
+@Data
 @Table(name = "videojuego")
 public class VideojuegoEntidad {
 	
@@ -40,53 +43,5 @@ public class VideojuegoEntidad {
 
 	public VideojuegoEntidad() {
 		
-	}
-
-	public Long getIdVideojuego() {
-		return idVideojuego;
-	}
-
-	public void setIdVideojuego(Long idVideojuego) {
-		this.idVideojuego = idVideojuego;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getGenero() {
-		return genero;
-	}
-
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
-	public LocalDate getFechaLanzamiento() {
-		return fechaLanzamiento;
-	}
-
-	public void setFechaLanzamiento(LocalDate fechaLanzamiento) {
-		this.fechaLanzamiento = fechaLanzamiento;
-	}
-
-	public Integer getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(Integer precio) {
-		this.precio = precio;
-	}
-
-	public String getAutor() {
-		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
 	}
 }
