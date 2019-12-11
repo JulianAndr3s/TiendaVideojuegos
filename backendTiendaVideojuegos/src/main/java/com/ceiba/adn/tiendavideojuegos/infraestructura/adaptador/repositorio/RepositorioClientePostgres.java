@@ -49,17 +49,6 @@ public class RepositorioClientePostgres implements RepositorioCliente {
 	}
 
 	@Override
-	public ClienteDTO buscarPorId(Long idCliente) {
-		ClienteEntidad clienteEntidad = repositorioClienteJpa.findById(idCliente).orElse(null);
-		if(clienteEntidad != null) {
-			return convertirCliente.convertirClienteEntidadAClienteDTO(clienteEntidad);
-		}
-		else {
-			return null;
-		}
-	}
-
-	@Override
 	public ClienteDTO buscarPorCedula(String cedula) {
 		ClienteEntidad clienteEntidad = repositorioClienteJpa.findByCedula(cedula);
 		if(clienteEntidad != null) {
