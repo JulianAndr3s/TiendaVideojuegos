@@ -1,5 +1,6 @@
 package com.ceiba.adn.tiendavideojuegos.infraestructura.integracion.controlador;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -29,7 +30,6 @@ import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Cliente;
 import com.ceiba.adn.tiendavideojuegos.infraestructura.adaptador.repositorio.RepositorioClientePostgres;
 import com.ceiba.adn.tiendavideojuegos.infraestructura.repositoriojpa.RepositorioClienteJpa;
 import com.ceiba.adn.tiendavideojuegos.testdatabuilder.aplicacion.comando.ComandoClienteTestDataBuilder;
-import com.ceiba.adn.tiendavideojuegos.testdatabuilder.dominio.modelo.ClienteTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
@@ -39,7 +39,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Transactional
 class ControladorClienteTest {
 
-	private static final String CEDULA_PARA_TEST = "1036402404";
+
+	private static final Long ID_PARA_TEST = 5L;
+	private static final String CEDULA_PARA_TEST = "1036";
 	private static final String NOMBRE_CLIENTE_TEST = "JulianActualizar";
 
 	
@@ -71,6 +73,33 @@ class ControladorClienteTest {
 				.andExpect(status().isOk());
 	}
 	
+	@Test
+	public void eliminarClienteTest() throws Exception {
+		Cliente cliente = new Cliente(4L,"J","U","L","I","1036","N");
+		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
+		
+		repositorioClientePostgres.crearCliente(cliente);
+		mockMvc.perform(delete("/cliente/".concat(CEDULA_PARA_TEST))
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(cliente)))
+				.andDo(print())
+				.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void actualizarVideojuegoTest() throws Exception {
+		Cliente cliente = new Cliente(5L,"J","U","L","I","A","N");
+		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
+		
+		repositorioClientePostgres.crearCliente(cliente);
+		cliente.setNombre(NOMBRE_CLIENTE_TEST);
+
+		mockMvc.perform(put("/videojuego/".concat(ID_PARA_TEST.toString()))
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(cliente)))
+				.andDo(print())
+				.andExpect(status().isOk());
+	}
 	
 	@Test
 	public void listarClienteTest() throws Exception {
