@@ -56,7 +56,16 @@ class ControladorClienteTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
     }
 	
-	
+	@Test
+	public void crearClienteTest() throws Exception {
+		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
+		
+		mockMvc.perform(post("/cliente")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(comandoCliente)))
+				.andDo(print())
+				.andExpect(status().isOk());
+	}
 	
 	@Test
 	public void listarClienteTest() throws Exception {
