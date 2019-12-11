@@ -60,11 +60,16 @@ class ControladorClienteTest {
 	public void crearClienteTest() throws Exception {
 		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
 		
+		try {
 		mockMvc.perform(post("/cliente")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(comandoCliente)))
 				.andDo(print())
 				.andExpect(status().isOk());
+		}
+		catch(Exception excepcionTest) {
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
 	}
 	
 	@Test
@@ -75,12 +80,16 @@ class ControladorClienteTest {
 		repositorioClientePostgres.crearCliente(cliente);
 		
 		cliente.setNombre(NOMBRE_CLIENTE_TEST);
-		
+		try {
 		mockMvc.perform(put("/cliente/".concat(CEDULA_PARA_TEST))
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(cliente)))
 				.andDo(print())
 				.andExpect(status().isOk());
+		}
+		catch(Exception excepcionTest) {
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
 	}
 	
 	@Test
@@ -95,11 +104,12 @@ class ControladorClienteTest {
 		clientes.add(cliente);
 		clientes.add(cliente2);
 		
-		mockMvc.perform(get("/cliente")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(clientes)))
-				.andDo(print())
-				.andExpect(status().isOk());
+			mockMvc.perform(get("/cliente")
+					.contentType(MediaType.APPLICATION_JSON)
+					.content(objectMapper.writeValueAsString(clientes)))
+					.andDo(print())
+					.andExpect(status().isOk());
+
 	}
 	
 	
