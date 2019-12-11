@@ -68,24 +68,7 @@ class ControladorClienteTest {
 				.andExpect(status().isOk());
 	}
 	
-	@Test
-	public void actualizarClienteTest() throws Exception {
-		Cliente cliente = new ClienteTestDataBuilder().build();
-		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
-		
-		repositorioClientePostgres.crearCliente(cliente);
-		
-		cliente.setNombre(NOMBRE_CLIENTE_TEST);
-
-		mockMvc.perform(put("/cliente/".concat(CEDULA_PARA_TEST))
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(cliente)))
-				.andDo(print())
-				.andExpect(status().isOk());
-
-	}
 	
-
 	@Test
 	public void listarClienteTest() throws Exception {
 		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
