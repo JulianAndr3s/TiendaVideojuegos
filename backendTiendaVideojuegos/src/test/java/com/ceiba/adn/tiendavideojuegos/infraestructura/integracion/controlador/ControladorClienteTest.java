@@ -9,6 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.ArrayList;
 
+import javax.transaction.Transactional;
+
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -69,6 +71,7 @@ class ControladorClienteTest {
 	}
 	
 	@Test
+	@Transactional
 	public void actualizarClienteTest() throws Exception {
 		Cliente cliente = new ClienteTestDataBuilder().build();
 		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
@@ -85,6 +88,7 @@ class ControladorClienteTest {
 	}
 	
 	@Test
+	@Transactional
 	public void eliminarClienteTest() throws Exception {
 		Cliente cliente = new ClienteTestDataBuilder().build();
 		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
