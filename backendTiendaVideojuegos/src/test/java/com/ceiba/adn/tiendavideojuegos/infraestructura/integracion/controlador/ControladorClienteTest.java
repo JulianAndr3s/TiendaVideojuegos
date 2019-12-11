@@ -25,10 +25,12 @@ import org.springframework.web.context.WebApplicationContext;
 import com.ceiba.adn.tiendavideojuegos.BackendTiendaVideojuegosApplication;
 import com.ceiba.adn.tiendavideojuegos.aplicacion.comando.ComandoCliente;
 import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Cliente;
+import com.ceiba.adn.tiendavideojuegos.dominio.modelo.Videojuego;
 import com.ceiba.adn.tiendavideojuegos.infraestructura.adaptador.repositorio.RepositorioClientePostgres;
 import com.ceiba.adn.tiendavideojuegos.infraestructura.repositoriojpa.RepositorioClienteJpa;
 import com.ceiba.adn.tiendavideojuegos.testdatabuilder.aplicacion.comando.ComandoClienteTestDataBuilder;
 import com.ceiba.adn.tiendavideojuegos.testdatabuilder.dominio.modelo.ClienteTestDataBuilder;
+import com.ceiba.adn.tiendavideojuegos.testdatabuilder.dominio.modelo.VideojuegoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
@@ -137,6 +139,17 @@ class ControladorClienteTest {
 		} catch(Exception excepcionTest){
 			System.out.println(excepcionTest.getCause().getMessage());
 		}
+	}
+	
+	@Test
+	void noActualizarClienteTest() throws Exception {
+		Cliente cliente = new ClienteTestDataBuilder().build();
+		
+		mockMvc.perform(put("/cliente/".concat(ID_PARA_TEST.toString()))
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(cliente)))
+				.andDo(print())
+				.andExpect(status().isOk());
 	}
 	
 	

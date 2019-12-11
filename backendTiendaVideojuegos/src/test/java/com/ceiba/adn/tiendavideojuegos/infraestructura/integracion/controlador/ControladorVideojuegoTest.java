@@ -134,4 +134,15 @@ class ControladorVideojuegoTest {
 			System.out.println(excepcionTest.getCause().getMessage());
 		}
 	}
+	
+	@Test
+	void noActualizarVideojuegoTest() throws Exception {
+		Videojuego videojuego = new VideojuegoTestDataBuilder().build();
+		
+		mockMvc.perform(put("/videojuego/".concat(ID_PARA_TEST.toString()))
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(videojuego)))
+				.andDo(print())
+				.andExpect(status().isOk());
+	}
 }
