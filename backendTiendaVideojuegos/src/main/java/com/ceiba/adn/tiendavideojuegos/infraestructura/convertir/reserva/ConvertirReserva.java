@@ -17,10 +17,6 @@ public class ConvertirReserva {
 	public ReservaEntidad convertirReservaDominioAReservaEntidad(Reserva reserva){
         return modelMapper.map(reserva, ReservaEntidad.class);
 	}
-	
-	public ReservaDTO convertirReservaEntidadAReservaDTO(ReservaEntidad reservaEntidad) {
-		return modelMapper.map(reservaEntidad, ReservaDTO.class);
-	}
 
     public List<ReservaDTO> convertirListaReservaEntidadAListaReserva(List<ReservaEntidad> listaReservaEntidad, List<ReservaDTO> listaReserva){
         for(ReservaEntidad reservaEntidad: listaReservaEntidad) {
