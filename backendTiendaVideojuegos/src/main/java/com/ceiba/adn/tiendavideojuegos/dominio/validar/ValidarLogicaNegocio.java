@@ -15,9 +15,7 @@ public class ValidarLogicaNegocio {
     	nombreVideojuego = nombreVideojuego.toLowerCase();
     	for(int i = 0; i < nombreVideojuego.length(); i++) {
     		if ((nombreVideojuego.charAt(i) == '*') || (nombreVideojuego.charAt(i) == '/') || 
-    				(nombreVideojuego.charAt(i) == '+') || (nombreVideojuego.charAt(i) == '#') || 
-    					(nombreVideojuego.charAt(i) == '%') || (nombreVideojuego.charAt(i) == '$') ||
-    						(nombreVideojuego.charAt(i) == '@') || (nombreVideojuego.charAt(i) == '&')) {
+    				(nombreVideojuego.charAt(i) == '+')) {
     			contadorCaracteres ++;
     		}
     	}
