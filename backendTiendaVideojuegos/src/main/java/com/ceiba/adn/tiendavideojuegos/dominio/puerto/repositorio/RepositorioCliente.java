@@ -11,6 +11,7 @@ public interface RepositorioCliente {
 	List<ClienteDTO> listarClientes();
 	void actualizarCliente(Cliente cliente);
 	void eliminarCliente(Long idCliente);
+	ClienteDTO buscarPorId(Long idCliente);
 	ClienteDTO buscarPorCedula(String cedula);
 	boolean existeCliente(Cliente cliente);
 	
