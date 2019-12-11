@@ -88,21 +88,6 @@ class ControladorVideojuegoTest {
 	}
 	
 	@Test
-	@Transactional
-	public void eliminarVideojuegoTest() throws Exception {
-		Videojuego videojuego = new VideojuegoTestDataBuilder().build();
-		
-		RepositorioVideojuegoPostgres repositorioVideojuegoPostgres = new RepositorioVideojuegoPostgres(repositorioVideojuegoJpa);
-		
-		repositorioVideojuegoPostgres.crearVideojuego(videojuego);
-		mockMvc.perform(delete("/videojuego/".concat(NOMBRE_JUEGO_TEST))
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(videojuego)))
-				.andDo(print())
-				.andExpect(status().isOk());
-	}
-	
-	@Test
 	public void listarVideojuegosTest() throws Exception {
 		RepositorioVideojuegoPostgres repositorioVideojuegoPostgres = new RepositorioVideojuegoPostgres(repositorioVideojuegoJpa);
 		

@@ -71,7 +71,6 @@ class ControladorClienteTest {
 	}
 	
 	@Test
-	@Transactional
 	public void actualizarClienteTest() throws Exception {
 		Cliente cliente = new ClienteTestDataBuilder().build();
 		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
@@ -88,7 +87,6 @@ class ControladorClienteTest {
 	}
 	
 	@Test
-	@Transactional
 	public void eliminarClienteTest() throws Exception {
 		Cliente cliente = new ClienteTestDataBuilder().build();
 		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);

@@ -65,26 +65,7 @@ class ControladorReservaTest {
     public void setup() throws Exception {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
     }
-	
-	@Test
-	public void crearReservaTest() throws Exception {
-		
-		Videojuego videojuego = new VideojuegoTestDataBuilder().build();
-		RepositorioVideojuegoPostgres repositorioVideojuegoPostgres = new RepositorioVideojuegoPostgres(repositorioVideojuegoJpa);
-		repositorioVideojuegoPostgres.crearVideojuego(videojuego);
-		
-		Cliente cliente = new ClienteTestDataBuilder().build();
-		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
-		repositorioClientePostgres.crearCliente(cliente);
-		
-		ComandoReserva comandoReserva = new ComandoReservaTestDataBuilder().build();
-		
-		mockMvc.perform(post("/reserva")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(comandoReserva)))
-				.andDo(print())
-				.andExpect(status().isOk());
-	}
+
 	
 	@Test
 	public void listarReservaTest() throws Exception {
