@@ -9,6 +9,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.ArrayList;
 
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
+
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -62,13 +65,12 @@ class ControladorClienteTest {
 	@Test
 	public void crearClienteTest() throws Exception {
 		ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-
+		
 		mockMvc.perform(post("/cliente")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(comandoCliente)))
 				.andDo(print())
 				.andExpect(status().isOk());
-		
 	}
 	
 	@Test
@@ -79,37 +81,16 @@ class ControladorClienteTest {
 		repositorioClientePostgres.crearCliente(cliente);
 		
 		cliente.setNombre(NOMBRE_CLIENTE_TEST);
-		try {
+
 		mockMvc.perform(put("/cliente/".concat(CEDULA_PARA_TEST))
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(cliente)))
 				.andDo(print())
 				.andExpect(status().isOk());
-		}
-		catch(Exception excepcionTest) {
-			System.out.println(excepcionTest.getCause().getMessage());
-		}
+
 	}
 	
 
-	@Test
-	public void eliminarClienteTest() throws Exception {
-		Cliente cliente = new ClienteTestDataBuilder().build();
-		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
-		
-		repositorioClientePostgres.crearCliente(cliente);
-		try {
-		mockMvc.perform(delete("/cliente/1036402404")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(cliente)))
-				.andDo(print())
-				.andExpect(status().isOk());
-		}
-		catch(Exception excepcionTest) {
-			System.out.println(excepcionTest.getCause().getMessage());
-		}
-	}
-	
 	@Test
 	public void listarClienteTest() throws Exception {
 		RepositorioClientePostgres repositorioClientePostgres = new RepositorioClientePostgres(repositorioClienteJpa);
