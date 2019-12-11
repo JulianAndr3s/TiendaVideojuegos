@@ -9,8 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.ArrayList;
 
-import javax.transaction.Transactional;
-
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +37,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class ControladorClienteTest {
 
 	private static final String CEDULA_PARA_TEST = "1036";
-	private static final String NOMBRE_CLIENTE_TEST = "JulianActualizar";
 	private static final Long ID_PARA_TEST = 5L;
 
 	

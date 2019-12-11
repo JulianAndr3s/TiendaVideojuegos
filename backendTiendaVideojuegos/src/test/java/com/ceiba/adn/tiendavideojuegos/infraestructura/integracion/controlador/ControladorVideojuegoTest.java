@@ -119,4 +119,19 @@ class ControladorVideojuegoTest {
 				.andDo(print())
 				.andExpect(status().isOk());
 	}
+	
+	@Test
+	void excepcionCrearVideojuegoTest() throws Exception {
+		RepositorioVideojuegoPostgres repositorioVideojuegoPostgres = new RepositorioVideojuegoPostgres(repositorioVideojuegoJpa);
+		Videojuego videojuego = new Videojuego(1L,"J","U",LocalDate.now(),10,"I");
+		repositorioVideojuegoPostgres.crearVideojuego(videojuego);
+		try {	
+			mockMvc.perform(post("/videojuego")
+					.contentType(MediaType.APPLICATION_JSON)
+					.content(objectMapper.writeValueAsString(videojuego)))
+					.andExpect(status().is5xxServerError());
+		} catch(Exception excepcionTest){
+			System.out.println(excepcionTest.getCause().getMessage());
+		}
+	}
 }
