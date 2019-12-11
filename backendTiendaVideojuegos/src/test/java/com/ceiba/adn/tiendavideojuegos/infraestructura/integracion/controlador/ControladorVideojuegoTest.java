@@ -61,6 +61,7 @@ class ControladorVideojuegoTest {
 	@Test
 	public void crearVideojuegoTest() throws Exception {
 		ComandoVideojuego comandoVideojuego = new ComandoVideojuegoTestDataBuilder().build();
+		
 		mockMvc.perform(post("/videojuego")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(comandoVideojuego)))
@@ -72,9 +73,12 @@ class ControladorVideojuegoTest {
 	public void actualizarVideojuegoTest() throws Exception {
 		Videojuego videojuego = new VideojuegoTestDataBuilder().build();
 		RepositorioVideojuegoPostgres repositorioVideojuegoPostgres = new RepositorioVideojuegoPostgres(repositorioVideojuegoJpa);
+		
 		repositorioVideojuegoPostgres.crearVideojuego(videojuego);
+		
 		videojuego.setNombre(NOMBRE_JUEGO_TEST);
-		mockMvc.perform(put("/videojuego/1")
+		
+		mockMvc.perform(put("/videojuego/".concat(ID_PARA_TEST.toString()))
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(videojuego)))
 				.andDo(print())
@@ -85,8 +89,10 @@ class ControladorVideojuegoTest {
 	public void eliminarVideojuegoTest() throws Exception {
 		Videojuego videojuego = new VideojuegoTestDataBuilder().build();
 		RepositorioVideojuegoPostgres repositorioVideojuegoPostgres = new RepositorioVideojuegoPostgres(repositorioVideojuegoJpa);
+		
 		repositorioVideojuegoPostgres.crearVideojuego(videojuego);
-		mockMvc.perform(delete("/videojuego/1")
+		
+		mockMvc.perform(delete("/videojuego/".concat(ID_PARA_TEST.toString()))
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(videojuego)))
 				.andDo(print())
@@ -96,6 +102,7 @@ class ControladorVideojuegoTest {
 	@Test
 	public void listarVideojuegosTest() throws Exception {
 		RepositorioVideojuegoPostgres repositorioVideojuegoPostgres = new RepositorioVideojuegoPostgres(repositorioVideojuegoJpa);
+		
 		Videojuego videojuego = new Videojuego(1L,"GTA San Andreas", "Accion", LocalDate.of(2019, 10, 20),100000,"Rockstar");
 		Videojuego videojuego2 = new Videojuego(2L,"Fortnite", "Accion", LocalDate.of(2019, 5, 10),350000,"Electronic");
 		
