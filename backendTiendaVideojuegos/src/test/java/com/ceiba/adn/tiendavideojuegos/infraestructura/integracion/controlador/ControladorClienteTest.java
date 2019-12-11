@@ -8,6 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.ArrayList;
 
+import javax.transaction.Transactional;
+
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +36,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest(classes = BackendTiendaVideojuegosApplication.class)
 @AutoConfigureMockMvc
 @TestPropertySource("/test.properties")
+@Transactional
 class ControladorClienteTest {
 
 	private static final String CEDULA_PARA_TEST = "1036402404";
