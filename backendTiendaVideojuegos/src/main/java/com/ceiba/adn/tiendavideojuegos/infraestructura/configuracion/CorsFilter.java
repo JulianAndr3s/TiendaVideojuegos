@@ -31,10 +31,4 @@ public class CorsFilter implements Filter {
             chain.doFilter(req, res);
         }
     }
-
-    public void destroy() {
-    }
-
-    public void init(FilterConfig config) throws ServletException {
-    }
 }
