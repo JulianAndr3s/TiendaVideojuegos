@@ -1,1 +1,113 @@
-<p>listar-reserva works!</p>
+<div class="card">
+    <div class="card-header">
+        <a class="btn btn-outline-secondary" [routerLink]="['/crear-reserva']" routerLinkActive="active">Registrar reserva</a>
+    </div>
+
+    <div id="bienvenida">
+        <br>
+        <img src="../../../assets/imagenes/icon.png">
+        <h1 class="display-4">Bienvenido videogamer!</h1>
+        <p class="lead">Aquí podrás ver las reservas, modificarlas o registrar una en el boton de arriba</p>
+    </div>
+
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <div>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Lo siento! </strong>No hay reservas registradas en la base de datos.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            </div>
+            <div>
+                <p>Reservas</p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Identificador</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Videojuego</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"> </th>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Editar</button>
+                                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Eliminar</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </blockquote>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+
+<!-- The Modal Eliminar-->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Eliminar</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                ¿Está seguro que desea eliminar la información de X ?
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- The Modal Editar-->
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Editar</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-header">
+                        Actualizar el perfil de
+                    </div>
+                    <div class="card-body">
+                        Prueba
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+            </div>
+
+        </div>
+    </div>
+</div>

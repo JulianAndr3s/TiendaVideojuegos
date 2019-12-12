@@ -1,0 +1,23 @@
+#bienvenida {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+#nombrevideojuego {
+    margin-top: 8px;
+    text-align: center;
+    text-decoration-line: initial;
+}
+
+#botones {
+    text-align: right;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+}

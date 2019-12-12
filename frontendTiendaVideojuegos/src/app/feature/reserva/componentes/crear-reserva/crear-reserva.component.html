@@ -1,1 +1,38 @@
-<p>crear-reserva works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/reservas']">Lista Reservas</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Crear Reserva</li>
+    </ol>
+</nav>
+
+<div id="bienvenida">
+    <img src="../../../assets/imagenes/icon.png">
+    <h1 class="display-4">Registro de Reservas</h1>
+</div>
+
+<div class="jumbotron">
+    <p class="lead">Llena el formulario completo.</p>
+    <hr class="my-4">
+    <h3>Datos de la reserva: </h3>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nombres">Cliente</label>
+                <select class="form-control">
+                        <option> Julian </option>
+                        <option> Andres </option>
+                    </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="apellido">Videojuego</label><select class="form-control">
+                        <option> FIFA </option>
+                        <option> GTA San Andreas </option>
+                    </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+</div>
+
+<app-pie-pagina></app-pie-pagina>

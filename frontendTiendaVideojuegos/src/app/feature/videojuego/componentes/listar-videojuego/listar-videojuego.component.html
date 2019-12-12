@@ -1,1 +1,50 @@
-<p>listar-videojuego works!</p>
+<div class="card">
+    <div class="card-header">
+        <a class="btn btn-outline-secondary" [routerLink]="['/crear-videojuego']" routerLinkActive="active">Registrar videojuego</a>
+    </div>
+
+    <div id="bienvenida">
+        <br>
+        <img src="../../../assets/imagenes/icon.png">
+        <h1 class="display-4">Bienvenido videogamer!</h1>
+        <p class="lead">Aquí podrás ver los clientes, modificarlos o registrarte en el boton de arriba</p>
+    </div>
+</div>
+
+<br>
+<h3> Videojuegos</h3>
+<br>
+
+<div class="container" id="contenedor">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Lo siento! </strong>No hay videojuegos registrados en la base de datos.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="rows">
+        <div class="column">
+            <div class="card border-dark mb-3" style="max-width: 30rem; justify-content: center;">
+                <div class="card-header border-dark mb-3">
+                    Genero del Videojuego
+                </div>
+                <div class="container" id="nombrevideojuego">
+                    <strong><h4>Nombre del videojuego</h4></strong>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Precio: </li>
+                        <li class="list-group-item">Fecha: </li>
+                        <li class="list-group-item">Autor: </li>
+                    </ul>
+                </div>
+                <div class="card-footer border-dark mb-3">
+                    <div id="botones">
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Editar</button>
+                        <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

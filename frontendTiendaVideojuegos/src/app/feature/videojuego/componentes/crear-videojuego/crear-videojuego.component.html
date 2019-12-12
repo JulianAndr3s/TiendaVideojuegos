@@ -1,1 +1,50 @@
-<p>crear-videojuego works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/videojuegos']">Lista Videojuegos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Crear Videojuego</li>
+    </ol>
+</nav>
+
+<div id="bienvenida">
+    <img src="../../../assets/imagenes/icon.png">
+    <h1 class="display-4">Registro de videojuegos</h1>
+</div>
+
+<div class="jumbotron">
+    <p class="lead">Llena el formulario completo.</p>
+    <hr class="my-4">
+    <h3>Datos del videojuego: </h3>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nombres">Nombre</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="apellido">Genero</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="telefono">Fecha Lanzamiento</label>
+                <input type="date" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="telefono">Precio</label>
+                <input type="email" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="telefono">Autor</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+</div>
+
+<app-pie-pagina></app-pie-pagina>
