@@ -11,13 +11,9 @@ public class ServicioActualizarVideojuego {
 		this.repositorioVideojuego = repositorioVideojuego;
 	}
 	
-	public boolean ejecutar(Videojuego videojuego) {
+	public void ejecutar(Videojuego videojuego) {
 		if(repositorioVideojuego.existeVideojuego(videojuego)) {
 			this.repositorioVideojuego.actualizarVideojuego(videojuego);
-			return true;
-		}
-		else {
-			return false;
 		}
 	}
 }

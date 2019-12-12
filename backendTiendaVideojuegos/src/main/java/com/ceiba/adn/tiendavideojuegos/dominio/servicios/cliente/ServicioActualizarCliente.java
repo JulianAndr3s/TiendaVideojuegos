@@ -11,13 +11,9 @@ public class ServicioActualizarCliente {
 		this.repositorioCliente = repositorioCliente;
 	}
 	
-	public boolean ejecutar(Cliente cliente) {
+	public void ejecutar(Cliente cliente) {
 		if(repositorioCliente.existeCliente(cliente)) {
 			this.repositorioCliente.actualizarCliente(cliente);
-			return true;
-		}
-		else {
-			return false;
 		}
 	}
 }
