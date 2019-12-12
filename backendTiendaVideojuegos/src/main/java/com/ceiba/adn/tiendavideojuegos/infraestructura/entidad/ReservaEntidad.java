@@ -9,7 +9,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 @Table(name = "reserva")
 public class ReservaEntidad {
 	
@@ -32,29 +37,5 @@ public class ReservaEntidad {
 
 	public ReservaEntidad() {
 		
-	}
-
-	public Long getIdReserva() {
-		return idReserva;
-	}
-
-	public void setIdReserva(Long idReserva) {
-		this.idReserva = idReserva;
-	}
-
-	public ClienteEntidad getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(ClienteEntidad cliente) {
-		this.cliente = cliente;
-	}
-
-	public VideojuegoEntidad getVideojuego() {
-		return videojuego;
-	}
-
-	public void setVideojuego(VideojuegoEntidad videojuego) {
-		this.videojuego = videojuego;
 	}
 }
