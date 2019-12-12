@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import javax.transaction.Transactional;
 
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -59,6 +60,7 @@ class ControladorReservaTest {
     }
 	
 	@Test
+	@Transactional
 	public void crearReservaTest() throws Exception {
 		Videojuego videojuego = new VideojuegoTestDataBuilder().build();
 		RepositorioVideojuegoPostgres repositorioVideojuegoPostgres = new RepositorioVideojuegoPostgres(repositorioVideojuegoJpa);
