@@ -17,20 +17,20 @@
     <form (ngSubmit)="insertarReserva()">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="nombres">Cliente</label>
+                <label for="idCliente">Cliente</label>
                 <select class="form-control" [(ngModel)]="idCliente" id="idCliente" name="idCliente">
                      <option *ngFor="let cliente of clientes" [value]="cliente.idCliente"> {{cliente.nombre}} - {{cliente.cedula}}</option>
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="apellido">Videojuego</label>
-                <select class="form-control" [(ngModel)]="idVideojuego" id="idVidejuego" name="idVidejuego">
+                <label for="idVideojuego">Videojuego</label>
+                <select class="form-control" [(ngModel)]="idVideojuego" id="idVideojuego" name="idVideojuego">
                     <option *ngFor="let videojuego of videojuegos" [value]="videojuego.idVideojuego"> {{videojuego.nombre}} </option>
                </select>
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button id="registrar" type="submit" class="btn btn-primary">Registrar</button>
     </form>
 </div>
 
