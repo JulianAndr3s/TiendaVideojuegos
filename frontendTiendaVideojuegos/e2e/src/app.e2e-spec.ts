@@ -23,6 +23,7 @@ describe('insertarCliente', function() {
     element(by.name('estado')).sendKeys('Inactivo');
     browser.sleep(2000);
     element(by.id('registrar')).click();
+    browser.sleep(2000);
   });
 });
 
@@ -47,6 +48,7 @@ describe('insertarVideojuego', function() {
     element(by.name('precio')).sendKeys(300000);
     element(by.name('autor')).sendKeys('Electronics');
     element(by.id('registrar')).click();
+    browser.sleep(2000);
   });
 });
 
@@ -63,11 +65,12 @@ describe('insertarReserva', function() {
     browser.get('http://localhost:4200/crear-reserva');
     browser.sleep(3000);
 
-    element(by.name('idCliente')).sendKeys(1);
+    element(by.xpath('/html[1]/body[1]/app-root[1]/app-crear-reserva[1]/div[2]/form[1]/div[1]/div[1]/select[1]/option[1]')).click();
     browser.sleep(2000);
-    element(by.name('idVideojuego')).sendKeys(1);
+    element(by.xpath('/html[1]/body[1]/app-root[1]/app-crear-reserva[1]/div[2]/form[1]/div[1]/div[2]/select[1]/option[1]')).click();
     browser.sleep(2000);
     element(by.id('registrar')).click();
+    browser.sleep(2000);
   });
 });
 
