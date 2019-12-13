@@ -14,20 +14,19 @@
     <p class="lead">Llena el formulario completo.</p>
     <hr class="my-4">
     <h3>Datos de la reserva: </h3>
-    <form>
+    <form (ngSubmit)="insertarReserva()">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="nombres">Cliente</label>
-                <select class="form-control">
-                        <option> Julian </option>
-                        <option> Andres </option>
-                    </select>
+                <select class="form-control" [(ngModel)]="idCliente" id="idCliente" name="idCliente">
+                     <option *ngFor="let cliente of clientes" [value]="cliente.idCliente"> {{cliente.nombre}} - {{cliente.cedula}}</option>
+                </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="apellido">Videojuego</label><select class="form-control">
-                        <option> FIFA </option>
-                        <option> GTA San Andreas </option>
-                    </select>
+                <label for="apellido">Videojuego</label>
+                <select class="form-control" [(ngModel)]="idVideojuego" id="idVidejuego" name="idVidejuego">
+                    <option *ngFor="let videojuego of videojuegos" [value]="videojuego.idVideojuego"> {{videojuego.nombre}} </option>
+               </select>
             </div>
         </div>
 

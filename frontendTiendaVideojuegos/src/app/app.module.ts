@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +15,7 @@ import { CrearClienteComponent } from './feature/cliente/componentes/crear-clien
 import { ListarClienteComponent } from './feature/cliente/componentes/listar-cliente/listar-cliente.component';
 import { CrearReservaComponent } from './feature/reserva/componentes/crear-reserva/crear-reserva.component';
 import { ListarReservaComponent } from './feature/reserva/componentes/listar-reserva/listar-reserva.component';
+import { ClienteService } from './feature/cliente/shared/servicios/cliente.service';
 
 @NgModule({
   declarations: [
@@ -27,10 +31,13 @@ import { ListarReservaComponent } from './feature/reserva/componentes/listar-res
     ListarReservaComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ClienteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

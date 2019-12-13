@@ -10,9 +10,13 @@
         <p class="lead">Aquí podrás ver los clientes, modificarlos o registrarte en el boton de arriba</p>
     </div>
 
+    <br>
+    <h3> Clientes</h3>
+    <br>
+
     <div class="card-body">
         <blockquote class="blockquote mb-0">
-            <div>
+            <div *ngIf="clientes.length == 0">
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>Lo siento! </strong>No hay clientes registrados en la base de datos.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -20,7 +24,7 @@
                     </button>
                 </div>
             </div>
-            <div>
+            <div *ngIf="clientes.length > 0">
                 <p>Clientes</p>
                 <table class="table">
                     <thead class="thead-dark">
@@ -30,22 +34,28 @@
                             <th scope="col">Apellido</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col">Correo</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row"> </th>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
+                        <tr *ngFor="let cliente of clientes">
+                            <th scope="row">{{cliente.cedula}}</th>
+                            <td>{{cliente.nombre}} </td>
+                            <td>{{cliente.apellido}} </td>
+                            <td>{{cliente.telefono}} </td>
+                            <td>{{cliente.correo}} </td>
+                            <div *ngIf="cliente.estado == 'Activo'">
+                                <td class="table-success">{{cliente.estado}}</td>
+                            </div>
+                            <div *ngIf="cliente.estado == 'Inactivo'">
+                                <td class="table-danger">{{cliente.estado}}</td>
+                            </div>
                             <td>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Editar</button>
-                                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Eliminar</button>
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2" (click)="mostrarModal(cliente)">Editar</button>
+                                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal" (click)="mostrarModal(cliente)">Eliminar</button>
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -56,8 +66,7 @@
 <br>
 <br>
 
-
-<!-- The Modal Eliminar-->
+<!-- El Modal de Eliminar-->
 <div class="modal fade" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -70,19 +79,19 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                ¿Está seguro que desea eliminar la información de X ?
+                ¿Está seguro que desea eliminar la información de {{clienteSeleccionado.nombre}} ?
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="eliminarCliente(clienteSeleccionado.cedula)">Aceptar</button>
             </div>
 
         </div>
     </div>
 </div>
 
-<!-- The Modal Editar-->
+<!-- El Modal de Editar-->
 <div class="modal fade" id="myModal2">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -97,17 +106,60 @@
             <div class="modal-body">
                 <div class="card">
                     <div class="card-header">
-                        Actualizar el perfil de
+                        Actualizar el perfil de {{clienteSeleccionado.nombre}}
                     </div>
                     <div class="card-body">
-                        Prueba
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="nombres">Nombre</label>
+                                    <input type="text" class="form-control" id="nombres" name="nombre" [(ngModel)]="clienteActualizar.nombre" [value]="clienteSeleccionado.nombre" minlength="3" #nombres="ngModel" required>
+                                    <div class="alert alert-danger" *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)">
+                                        <div *ngIf="nombres?.errors.required">El nombre es requerido</div>
+                                        <div *ngIf="nombres?.errors.minlength">El nombre debe tener al menos 3 caracteres</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="apellido">Apellido</label>
+                                    <input type="text" class="form-control" id="apellidos" name="apellido" [(ngModel)]="clienteActualizar.apellido" [value]="clienteSeleccionado.apellido" minlength="3" #apellidos="ngModel" required>
+                                    <div class="alert alert-danger" *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)">
+                                        <div *ngIf="apellidos?.errors.required">El apellido es requerido</div>
+                                        <div *ngIf="apellidos?.errors.minlength">El apellido debe tener al menos 3 caracteres</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="clienteActualizar.telefono" [value]="clienteSeleccionado.telefono">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="correo">Correo</label>
+                                    <input type="email" class="form-control" id="correo" name="correo" [(ngModel)]="clienteActualizar.correo" [value]="clienteSeleccionado.correo">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="cedula">Cedula</label>
+                                    <input type="text" class="form-control" id="cedula" name="cedula" [(ngModel)]="clienteActualizar.cedula" [value]="clienteSeleccionado.cedula" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="estado">Estado</label>
+                                    <select class="form-control" [(ngModel)]="clienteActualizar.estado" [value]="clienteSeleccionado.estado" id="estado" name="estado">
+                                                <option [value]="'Activo'" > Activo </option>
+                                                <option [value]="'Inactivo'" > Inactivo </option>
+                                            </select>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="actualizarCliente(clienteSeleccionado.idCliente)">Aceptar</button>
             </div>
 
         </div>

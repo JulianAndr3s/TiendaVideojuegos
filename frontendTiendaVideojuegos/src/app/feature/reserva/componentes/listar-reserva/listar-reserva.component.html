@@ -12,7 +12,7 @@
 
     <div class="card-body">
         <blockquote class="blockquote mb-0">
-            <div>
+            <div *ngIf="reservas.length == 0">
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>Lo siento! </strong>No hay reservas registradas en la base de datos.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -20,7 +20,7 @@
                         </button>
                 </div>
             </div>
-            <div>
+            <div *ngIf="reservas.length > 0">
                 <p>Reservas</p>
                 <table class="table">
                     <thead class="thead-dark">
@@ -33,14 +33,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row"> </th>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
+                        <tr *ngFor="let reserva of reservas">
+                            <th scope="row">{{reserva.idReserva}} </th>
+                            <td> {{reserva.cliente.nombre}} </td>
+                            <td> {{reserva.videojuego.nombre}}</td>
+                            <td> {{reserva.videojuego.precio}}</td>
                             <td>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Editar</button>
-                                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Eliminar</button>
+                                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal" (click)="mostrarModal(reserva)">Eliminar</button>
                             </td>
                         </tr>
 
@@ -68,44 +67,12 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                ¿Está seguro que desea eliminar la información de X ?
+                ¿Está seguro que desea eliminar la reserva de {{reservaSeleccionada.cliente.nombre}} con C.C {{reservaSeleccionada.cliente.cedula}} ?
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- The Modal Editar-->
-<div class="modal fade" id="myModal2">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Editar</h4>
-                <button type="button" class="close" data-dismiss="modal">×</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div class="card">
-                    <div class="card-header">
-                        Actualizar el perfil de
-                    </div>
-                    <div class="card-body">
-                        Prueba
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="eliminarReserva(reservaSeleccionada.idReserva)">Aceptar</button>
             </div>
 
         </div>
