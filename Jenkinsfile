@@ -24,6 +24,11 @@ pipeline {
     gradle 'Gradle5.6_Centos' //Preinstalada en la Configuración del Master
   }
   
+  //Se implementa el Jmeter
+   environment{
+    PROJETC_PATH_JMETER= '/opt/Apache/apache-jmeter-5.0/bin'
+	}
+  
   //Aquí comienzan los “items” del Pipeline
   stages {
     stage('Checkout') {
@@ -64,6 +69,17 @@ pipeline {
 	}
       }
     }
+	
+	stage('Test_carga') {
+    steps {
+        echo '------------>Test de carga<------------'                     
+        dir("${PROJETC_PATH_JMETER}"){                          
+            sh './jmeter  -n -t ${WORKSPACE}/TestVideojuegos.jmx -l ${WORKSPACE}/performacetest.jtl'   
+            performanceReport parsers: [[$class: 'JMeterParser', glob: "${WORKSPACE}/performacetest.jtl"]], sourceDataFiles: "${WORKSPACE}/performacetest.jtl", errorFailedThreshold: 15, errorUnstableThreshold: 15, ignoreFailedBuilds: false, ignoreUnstableBuilds: false, relativeFailedThresholdNegative: 0, relativeFailedThresholdPositive: 0, relativeUnstableThresholdNegative: 0, relativeUnstableThresholdPositive: 0
+        }
+    }
+}
+	
     stage('Static Code Analysis') {
       steps {
         echo '------------>Análisis de código estático<------------'
